@@ -30,8 +30,8 @@
   "searchPlaceholder": { "message": "搜索标题或网站…" },
   "emptyTitleSearch": { "message": "没有匹配的结果" },
   "emptyHintSearch": { "message": "试试其他关键词" },
-  "extName": { "message": "ToRead" },
-  "extDescription": { "message": "将当前页面添加到待阅读列表，方便稍后阅读" },
+  "extName": { "message": "ToRead – 稍后读，一键收藏网页" },
+  "extDescription": { "message": "一键保存任意网页，搜索、筛选、打标签，告别「收藏了就忘」。你的私人阅读收件箱，随时找回好文章。" },
   "cmdAddToRead": { "message": "将当前页面添加到待阅读列表" },
   "cmdOpenPanel": { "message": "打开/关闭 ToRead 侧边栏" },
   "actionTitle": { "message": "ToRead - 打开待阅读列表" },
@@ -48,7 +48,7 @@
   "demoItem3Summary": { "message": "支持标题和域名的模糊匹配。搜索与 Tag 过滤可同时使用，取两者交集。" },
   "demoItem3Tag": { "message": "功能演示" },
 
-  "demoItem4Title": { "message": "✅ 这是一条已读示例 — 标记已读后会变灰，可用"清除已读"批量删除" },
+  "demoItem4Title": { "message": "✅ 这是一条已读示例 — 标记已读后会变灰，可用「清除已读」批量删除" },
   "demoItem4Summary": { "message": "点击卡片右侧的 ✓ 按钮标记已读，或按键盘 R 键。已读条目会降低透明度显示在列表中。" },
 
   "dailyRecommendTitle": { "message": "📖 ToRead 每日推荐" },
