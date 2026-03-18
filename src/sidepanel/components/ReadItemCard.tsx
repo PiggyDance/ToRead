@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback, type FC, type KeyboardEvent } from 'react';
+import { useState, useRef, useCallback, useEffect, type FC, type KeyboardEvent } from 'react';
 import type { ReadItem } from '../../types';
 import { formatRelativeTime } from '../utils/time';
 import { t } from '../utils/i18n';
@@ -8,19 +8,42 @@ interface ReadItemCardProps {
   focused?: boolean;
   flashing?: boolean;
   activeTag?: string | null;
+  allTags?: string[];
   onToggleRead: (id: string) => void;
   onRemove: (id: string) => void;
   onUpdateTags: (id: string, tags: string[]) => void;
   onTagClick: (tag: string) => void;
 }
 
-export const ReadItemCard: FC<ReadItemCardProps> = ({ item, focused, flashing, activeTag, onToggleRead, onRemove, onUpdateTags, onTagClick }) => {
+export const ReadItemCard: FC<ReadItemCardProps> = ({ item, focused, flashing, activeTag, allTags = [], onToggleRead, onRemove, onUpdateTags, onTagClick }) => {
   const [isRemoving, setIsRemoving] = useState(false);
   const [summaryExpanded, setSummaryExpanded] = useState(false);
   const [tagInput, setTagInput] = useState('');
   const [showTagInput, setShowTagInput] = useState(false);
+  const [suggestionIndex, setSuggestionIndex] = useState(-1);
+  const [dropdownPos, setDropdownPos] = useState<{ top: number; left: number } | null>(null);
   const hoverTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const tagInputRef = useRef<HTMLInputElement>(null);
+  const suggestionsRef = useRef<HTMLUListElement>(null);
+
+  // 计算当前输入的补全候选：从全局 tags 中过滤掉已有的，再按输入过滤
+  const suggestions = (() => {
+    const existing = new Set(item.tags ?? []);
+    const q = tagInput.trim().toLowerCase();
+    return allTags.filter(
+      (t) => !existing.has(t) && (q === '' || t.toLowerCase().includes(q))
+    );
+  })();
+
+  // 每次 suggestions 出现或 input 位置变化时，重新计算 fixed 坐标
+  useEffect(() => {
+    if (suggestions.length > 0 && showTagInput && tagInputRef.current) {
+      const rect = tagInputRef.current.getBoundingClientRect();
+      setDropdownPos({ top: rect.bottom + 4, left: rect.left });
+    } else {
+      setDropdownPos(null);
+    }
+  }, [suggestions.length, showTagInput, tagInput]);
 
   const handleRemove = () => {
     setIsRemoving(true);
@@ -44,7 +67,21 @@ export const ReadItemCard: FC<ReadItemCardProps> = ({ item, focused, flashing, a
     setSummaryExpanded(false);
   };
 
+  const handleSelectSuggestion = useCallback((tag: string) => {
+    const existing = item.tags ?? [];
+    onUpdateTags(item.id, [...existing, tag]);
+    setTagInput('');
+    setSuggestionIndex(-1);
+    // 选完后保持输入框聚焦，方便继续添加
+    setTimeout(() => tagInputRef.current?.focus(), 0);
+  }, [item.id, item.tags, onUpdateTags]);
+
   const handleAddTag = useCallback(() => {
+    // 如果有高亮的候选项，优先选候选
+    if (suggestionIndex >= 0 && suggestions[suggestionIndex]) {
+      handleSelectSuggestion(suggestions[suggestionIndex]);
+      return;
+    }
     const tag = tagInput.trim();
     if (!tag) return;
     const existing = item.tags ?? [];
@@ -54,15 +91,28 @@ export const ReadItemCard: FC<ReadItemCardProps> = ({ item, focused, flashing, a
     }
     onUpdateTags(item.id, [...existing, tag]);
     setTagInput('');
-  }, [tagInput, item.id, item.tags, onUpdateTags]);
+    setSuggestionIndex(-1);
+  }, [tagInput, suggestionIndex, suggestions, item.id, item.tags, onUpdateTags, handleSelectSuggestion]);
 
   const handleTagKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      setSuggestionIndex((i) => Math.min(i + 1, suggestions.length - 1));
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      setSuggestionIndex((i) => Math.max(i - 1, -1));
+    } else if (e.key === 'Enter') {
       e.preventDefault();
       handleAddTag();
     } else if (e.key === 'Escape') {
-      setShowTagInput(false);
-      setTagInput('');
+      if (suggestions.length > 0 && suggestionIndex >= 0) {
+        // 先关闭下拉
+        setSuggestionIndex(-1);
+      } else {
+        setShowTagInput(false);
+        setTagInput('');
+        setSuggestionIndex(-1);
+      }
     }
   };
 
@@ -74,6 +124,7 @@ export const ReadItemCard: FC<ReadItemCardProps> = ({ item, focused, flashing, a
   const handleShowTagInput = (e: React.MouseEvent) => {
     e.stopPropagation();
     setShowTagInput(true);
+    setSuggestionIndex(-1);
     setTimeout(() => tagInputRef.current?.focus(), 0);
   };
 
@@ -157,16 +208,43 @@ export const ReadItemCard: FC<ReadItemCardProps> = ({ item, focused, flashing, a
                 </span>
               ))}
               {showTagInput && (
-                <input
-                  ref={tagInputRef}
-                  className="tag-input"
-                  value={tagInput}
-                  onChange={(e) => setTagInput(e.target.value)}
-                  onKeyDown={handleTagKeyDown}
-                  onBlur={() => { handleAddTag(); setShowTagInput(false); }}
-                  placeholder="tag…"
-                  maxLength={20}
-                />
+                <div className="tag-input-wrap" onClick={(e) => e.stopPropagation()}>
+                  <input
+                    ref={tagInputRef}
+                    className="tag-input"
+                    value={tagInput}
+                    onChange={(e) => { setTagInput(e.target.value); setSuggestionIndex(-1); }}
+                    onKeyDown={handleTagKeyDown}
+                    onBlur={(e) => {
+                      // 点击候选列表时不关闭（relatedTarget 在 suggestions 内）
+                      if (suggestionsRef.current?.contains(e.relatedTarget as Node)) return;
+                      handleAddTag();
+                      setShowTagInput(false);
+                      setSuggestionIndex(-1);
+                    }}
+                    placeholder="tag…"
+                    maxLength={20}
+                    autoComplete="off"
+                  />
+                  {suggestions.length > 0 && dropdownPos && (
+                    <ul
+                      className="tag-suggestions"
+                      ref={suggestionsRef}
+                      style={{ top: dropdownPos.top, left: dropdownPos.left }}
+                    >
+                      {suggestions.map((tag, idx) => (
+                        <li
+                          key={tag}
+                          className={`tag-suggestion-item ${idx === suggestionIndex ? 'active' : ''}`}
+                          onMouseDown={(e) => { e.preventDefault(); handleSelectSuggestion(tag); }}
+                          onMouseEnter={() => setSuggestionIndex(idx)}
+                        >
+                          {tag}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
               )}
             </div>
           )}

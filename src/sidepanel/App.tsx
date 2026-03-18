@@ -31,6 +31,16 @@ export const App: FC = () => {
     updateTags,
   } = useReadItems();
 
+  // 收集全局所有已用 tag（去重、按使用频率排序）
+  const allTags = Array.from(
+    allItems.reduce((map, item) => {
+      (item.tags ?? []).forEach((tag) => map.set(tag, (map.get(tag) ?? 0) + 1));
+      return map;
+    }, new Map<string, number>())
+  )
+    .sort((a, b) => b[1] - a[1])
+    .map(([tag]) => tag);
+
   const handleTagClick = (tag: string) => {
     setActiveTag(activeTag === tag ? null : tag);
   };
@@ -163,6 +173,7 @@ export const App: FC = () => {
               focused={idx === focusedIndex}
               flashing={item.id === flashingId}
               activeTag={activeTag}
+              allTags={allTags}
               onToggleRead={(id) => handleToggleReadWithFlash(id, item.isRead)}
               onRemove={remove}
               onUpdateTags={updateTags}
