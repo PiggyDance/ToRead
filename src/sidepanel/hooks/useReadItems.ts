@@ -18,7 +18,7 @@ export function useReadItems() {
       setLoading(false);
     });
 
-    // 监听存储变化（来自 background 的添加操作）
+    // 监听存储变化（摘要写入后自动刷新）
     const unsubscribe = onItemsChanged((newItems) => {
       setItems(newItems);
     });
@@ -27,7 +27,12 @@ export function useReadItems() {
   }, []);
 
   const handleAddCurrentPage = useCallback(async () => {
-    await chrome.runtime.sendMessage({ type: 'ADD_CURRENT_PAGE' });
+    // 把当前窗口 ID 带给 background，让它找到正确的网页 tab
+    const currentWindow = await chrome.windows.getCurrent();
+    await chrome.runtime.sendMessage({
+      type: 'ADD_CURRENT_PAGE',
+      windowId: currentWindow.id,
+    });
   }, []);
 
   const handleRemove = useCallback(async (id: string) => {

@@ -7,12 +7,24 @@
     "storage",
     "tabs",
     "activeTab",
-    "sidePanel"
+    "sidePanel",
+    "windows",
+    "scripting"
+  ],
+  "host_permissions": [
+    "<all_urls>"
   ],
   "background": {
     "service_worker": "background.js",
     "type": "module"
   },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
   "side_panel": {
     "default_path": "src/sidepanel/index.html"
   },

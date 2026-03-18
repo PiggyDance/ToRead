@@ -17,6 +17,7 @@ type Locale = {
   timeMinutesAgo: (n: number) => string;
   timeHoursAgo: (n: number) => string;
   timeDaysAgo: (n: number) => string;
+  summaryGenerating: string;
 };
 
 const locales: Record<string, Locale> = {
@@ -39,6 +40,7 @@ const locales: Record<string, Locale> = {
     timeMinutesAgo: (n) => `${n} 分钟前`,
     timeHoursAgo: (n) => `${n} 小时前`,
     timeDaysAgo: (n) => `${n} 天前`,
+    summaryGenerating: '正在生成摘要…',
   },
   'zh-hant': {
     appSlogan: '稍後讀，不錯過',
@@ -59,6 +61,7 @@ const locales: Record<string, Locale> = {
     timeMinutesAgo: (n) => `${n} 分鐘前`,
     timeHoursAgo: (n) => `${n} 小時前`,
     timeDaysAgo: (n) => `${n} 天前`,
+    summaryGenerating: '正在生成摘要…',
   },
   ja: {
     appSlogan: 'あとで読む、見逃さない',
@@ -79,6 +82,7 @@ const locales: Record<string, Locale> = {
     timeMinutesAgo: (n) => `${n} 分前`,
     timeHoursAgo: (n) => `${n} 時間前`,
     timeDaysAgo: (n) => `${n} 日前`,
+    summaryGenerating: '要約を生成中…',
   },
   ko: {
     appSlogan: '나중에 읽고, 놓치지 않기',
@@ -99,6 +103,7 @@ const locales: Record<string, Locale> = {
     timeMinutesAgo: (n) => `${n}분 전`,
     timeHoursAgo: (n) => `${n}시간 전`,
     timeDaysAgo: (n) => `${n}일 전`,
+    summaryGenerating: '요약 생성 중…',
   },
   th: {
     appSlogan: 'อ่านทีหลัง ไม่พลาดสักชิ้น',
@@ -119,6 +124,7 @@ const locales: Record<string, Locale> = {
     timeMinutesAgo: (n) => `${n} นาทีที่แล้ว`,
     timeHoursAgo: (n) => `${n} ชั่วโมงที่แล้ว`,
     timeDaysAgo: (n) => `${n} วันที่แล้ว`,
+    summaryGenerating: 'กำลังสร้างสรุป…',
   },
   vi: {
     appSlogan: 'Đọc sau, không bỏ lỡ',
@@ -139,6 +145,7 @@ const locales: Record<string, Locale> = {
     timeMinutesAgo: (n) => `${n} phút trước`,
     timeHoursAgo: (n) => `${n} giờ trước`,
     timeDaysAgo: (n) => `${n} ngày trước`,
+    summaryGenerating: 'Đang tạo tóm tắt…',
   },
   fr: {
     appSlogan: 'Lire plus tard, ne rien manquer',
@@ -159,6 +166,7 @@ const locales: Record<string, Locale> = {
     timeMinutesAgo: (n) => `il y a ${n} min`,
     timeHoursAgo: (n) => `il y a ${n} h`,
     timeDaysAgo: (n) => `il y a ${n} j`,
+    summaryGenerating: 'Génération du résumé…',
   },
   es: {
     appSlogan: 'Lee después, no te pierdas nada',
@@ -179,6 +187,7 @@ const locales: Record<string, Locale> = {
     timeMinutesAgo: (n) => `hace ${n} min`,
     timeHoursAgo: (n) => `hace ${n} h`,
     timeDaysAgo: (n) => `hace ${n} días`,
+    summaryGenerating: 'Generando resumen…',
   },
   ru: {
     appSlogan: 'Читай позже, не пропускай',
@@ -199,6 +208,7 @@ const locales: Record<string, Locale> = {
     timeMinutesAgo: (n) => `${n} мин назад`,
     timeHoursAgo: (n) => `${n} ч назад`,
     timeDaysAgo: (n) => `${n} дн назад`,
+    summaryGenerating: 'Создание резюме…',
   },
   de: {
     appSlogan: 'Später lesen, nichts verpassen',
@@ -219,6 +229,7 @@ const locales: Record<string, Locale> = {
     timeMinutesAgo: (n) => `vor ${n} Min.`,
     timeHoursAgo: (n) => `vor ${n} Std.`,
     timeDaysAgo: (n) => `vor ${n} Tagen`,
+    summaryGenerating: 'Zusammenfassung wird erstellt…',
   },
   en: {
     appSlogan: 'Read later, miss nothing',
@@ -239,6 +250,7 @@ const locales: Record<string, Locale> = {
     timeMinutesAgo: (n) => `${n}m ago`,
     timeHoursAgo: (n) => `${n}h ago`,
     timeDaysAgo: (n) => `${n}d ago`,
+    summaryGenerating: 'Generating summary…',
   },
 };
 

@@ -323,6 +323,27 @@ body {
   color: var(--color-text-muted);
 }
 
+.card-summary {
+  margin-top: 5px;
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  /* 默认单行截断 */
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  max-height: 1.5em;
+  transition: max-height 0.28s ease, -webkit-line-clamp 0s 0.28s;
+}
+
+.card-summary.expanded {
+  -webkit-line-clamp: unset;
+  max-height: 10em;
+  transition: max-height 0.28s ease;
+}
+
+
 .card-domain {
   max-width: 120px;
   overflow: hidden;

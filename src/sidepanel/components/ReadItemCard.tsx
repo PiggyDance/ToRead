@@ -1,7 +1,8 @@
-import { useState, type FC } from 'react';
+import { useState, useRef, type FC } from 'react';
 import type { ReadItem } from '../../types';
 import { formatRelativeTime } from '../utils/time';
 import { t } from '../utils/i18n';
+
 
 interface ReadItemCardProps {
   item: ReadItem;
@@ -11,6 +12,8 @@ interface ReadItemCardProps {
 
 export const ReadItemCard: FC<ReadItemCardProps> = ({ item, onToggleRead, onRemove }) => {
   const [isRemoving, setIsRemoving] = useState(false);
+  const [summaryExpanded, setSummaryExpanded] = useState(false);
+  const hoverTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const handleRemove = () => {
     setIsRemoving(true);
@@ -24,6 +27,16 @@ export const ReadItemCard: FC<ReadItemCardProps> = ({ item, onToggleRead, onRemo
     }
   };
 
+  const handleMouseEnter = () => {
+    if (!item.summary || item.isRead) return;
+    hoverTimerRef.current = setTimeout(() => setSummaryExpanded(true), 100);
+  };
+
+  const handleMouseLeave = () => {
+    if (hoverTimerRef.current) clearTimeout(hoverTimerRef.current);
+    setSummaryExpanded(false);
+  };
+
   const domain = (() => {
     try {
       return new URL(item.url).hostname.replace(/^www\./, '');
@@ -32,8 +45,15 @@ export const ReadItemCard: FC<ReadItemCardProps> = ({ item, onToggleRead, onRemo
     }
   })();
 
+  // 摘要仅在未读且有内容时展示
+  const showSummaryArea = !item.isRead && !!item.summary;
+
   return (
-    <div className={`read-item-card ${item.isRead ? 'is-read' : ''} ${isRemoving ? 'removing' : ''}`}>
+    <div
+      className={`read-item-card ${item.isRead ? 'is-read' : ''} ${isRemoving ? 'removing' : ''}`}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <div className="card-main" onClick={handleOpen} role="button" tabIndex={0}>
         <div className="card-favicon">
           {item.favicon ? (
@@ -58,6 +78,11 @@ export const ReadItemCard: FC<ReadItemCardProps> = ({ item, onToggleRead, onRemo
             <span className="card-domain">{domain}</span>
             <span className="card-time">{formatRelativeTime(item.createdAt)}</span>
           </div>
+          {showSummaryArea && (
+            <div className={`card-summary ${summaryExpanded ? 'expanded' : ''}`}>
+              {item.summary}
+            </div>
+          )}
         </div>
       </div>
       <div className="card-actions">

@@ -56,6 +56,16 @@ export async function toggleRead(id: string): Promise<ReadItem | null> {
   return item;
 }
 
+/** 更新条目的摘要 */
+export async function updateSummary(id: string, summary: string): Promise<void> {
+  const items = await getItems();
+  const item = items.find((i) => i.id === id);
+  if (item) {
+    item.summary = summary;
+    await saveItems(items);
+  }
+}
+
 /** 清除所有已读条目 */
 export async function clearRead(): Promise<void> {
   const items = await getItems();

@@ -1,19 +1,44 @@
-import { addItem } from '../storage';
+import { addItem, updateSummary } from '../storage';
 
-/** 添加当前活跃页面到待阅读列表 */
-async function addCurrentPage(): Promise<void> {
-  const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+// ---- Session 缓存：tabId → 页面摘要（跨 service worker 重启持久化）----
 
-  if (!tab?.url || !tab.title) {
-    console.warn('[ToRead] 无法获取当前页面信息');
-    return;
+async function cacheSummary(tabId: number, summary: string): Promise<void> {
+  await chrome.storage.session.set({ [`summary_${tabId}`]: summary });
+}
+
+async function getCachedSummary(tabId: number, retries = 5, intervalMs = 200): Promise<string> {
+  for (let i = 0; i < retries; i++) {
+    const result = await chrome.storage.session.get(`summary_${tabId}`);
+    const summary = result[`summary_${tabId}`] ?? '';
+    if (summary) return summary;
+    if (i < retries - 1) await new Promise((r) => setTimeout(r, intervalMs));
   }
+  return '';
+}
 
-  // 过滤 chrome:// 等内部页面
-  if (tab.url.startsWith('chrome://') || tab.url.startsWith('chrome-extension://')) {
-    console.warn('[ToRead] 不支持添加浏览器内部页面');
-    return;
-  }
+// tab 关闭时清理缓存
+chrome.tabs.onRemoved.addListener((tabId) => {
+  chrome.storage.session.remove(`summary_${tabId}`);
+});
+
+// ---- 获取 Tab ----
+
+async function getActiveTab(windowId?: number): Promise<chrome.tabs.Tab | null> {
+  const query = windowId
+    ? { active: true, windowId }
+    : { active: true, lastFocusedWindow: true };
+  const tabs = await chrome.tabs.query(query);
+  const webTab = tabs.find(
+    (t) => t.url && !t.url.startsWith('chrome-extension://') && !t.url.startsWith('chrome://')
+  );
+  return webTab ?? null;
+}
+
+// ---- 添加页面 ----
+
+async function doAddCurrentPage(tab: chrome.tabs.Tab): Promise<void> {
+  if (!tab?.url || !tab.title || !tab.id) return;
+  if (tab.url.startsWith('chrome://') || tab.url.startsWith('chrome-extension://')) return;
 
   const result = await addItem({
     title: tab.title,
@@ -21,49 +46,82 @@ async function addCurrentPage(): Promise<void> {
     favicon: tab.favIconUrl,
   });
 
-  if (result.added) {
-    // 显示 badge 反馈
-    await chrome.action.setBadgeText({ text: '✓', tabId: tab.id });
-    await chrome.action.setBadgeBackgroundColor({ color: '#4CAF50', tabId: tab.id });
-    setTimeout(() => {
-      if (tab.id) {
-        chrome.action.setBadgeText({ text: '', tabId: tab.id });
-      }
-    }, 2000);
-  } else {
-    await chrome.action.setBadgeText({ text: '…', tabId: tab.id });
-    await chrome.action.setBadgeBackgroundColor({ color: '#FF9800', tabId: tab.id });
-    setTimeout(() => {
-      if (tab.id) {
-        chrome.action.setBadgeText({ text: '', tabId: tab.id });
-      }
-    }, 2000);
+  const badgeText = result.added ? '✓' : '…';
+  const badgeColor = result.added ? '#4CAF50' : '#FF9800';
+  await chrome.action.setBadgeText({ text: badgeText, tabId: tab.id });
+  await chrome.action.setBadgeBackgroundColor({ color: badgeColor, tabId: tab.id });
+  setTimeout(() => {
+    if (tab.id) chrome.action.setBadgeText({ text: '', tabId: tab.id });
+  }, 2000);
+
+  if (result.added && result.item) {
+    const summary = await getCachedSummary(tab.id);
+    console.log('[ToRead] 读取摘要缓存 tabId:', tab.id, '→', summary.slice(0, 30) || '(空)');
+    if (summary) {
+      await updateSummary(result.item.id, summary);
+    }
   }
 }
 
-// 监听快捷键命令
-chrome.commands.onCommand.addListener((command) => {
-  if (command === 'add-to-read') {
-    addCurrentPage();
+// ---- 扩展安装/更新时，向所有已打开的网页 tab 注入 content script ----
+
+chrome.runtime.onInstalled.addListener(async () => {
+  const tabs = await chrome.tabs.query({});
+  for (const tab of tabs) {
+    if (
+      tab.id &&
+      tab.url &&
+      !tab.url.startsWith('chrome://') &&
+      !tab.url.startsWith('chrome-extension://') &&
+      !tab.url.startsWith('about:')
+    ) {
+      chrome.scripting
+        .executeScript({ target: { tabId: tab.id }, files: ['content.js'] })
+        .catch(() => {/* 部分页面无法注入，忽略 */});
+    }
   }
 });
 
-// 点击扩展图标时打开侧边栏
+// ---- 事件监听 ----
+
+chrome.commands.onCommand.addListener(async (command) => {
+  if (command === 'add-to-read') {
+    const tab = await getActiveTab();
+    if (tab) doAddCurrentPage(tab);
+  }
+});
+
 chrome.action.onClicked.addListener((tab) => {
   if (tab.id) {
     chrome.sidePanel.open({ tabId: tab.id });
   }
 });
 
-// 监听来自 SidePanel 的消息
-chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.type === 'STORE_PAGE_SUMMARY') {
+    const tabId = sender.tab?.id;
+    console.log('[ToRead] 收到 STORE_PAGE_SUMMARY, tabId:', tabId, '摘要:', message.summary?.slice(0, 30));
+    if (tabId && message.summary) {
+      cacheSummary(tabId, message.summary).then(() => {
+        console.log('[ToRead] 摘要已写入 session storage, tabId:', tabId);
+        sendResponse({ ok: true });
+      });
+      return true;
+    }
+    return;
+  }
+
   if (message.type === 'ADD_CURRENT_PAGE') {
-    addCurrentPage().then(() => sendResponse({ success: true }));
-    return true; // 异步 sendResponse
+    const windowId: number | undefined = message.windowId;
+    (async () => {
+      const tab = await getActiveTab(windowId);
+      if (tab) await doAddCurrentPage(tab);
+      sendResponse({ success: true });
+    })();
+    return true;
   }
 });
 
-// 设置侧边栏行为：点击图标时打开
 chrome.sidePanel
   .setPanelBehavior({ openPanelOnActionClick: true })
   .catch(console.error);
