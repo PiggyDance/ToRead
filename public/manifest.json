@@ -1,0 +1,43 @@
+{
+  "manifest_version": 3,
+  "name": "ToRead",
+  "version": "1.0.0",
+  "description": "将当前页面添加到待阅读列表，方便稍后阅读",
+  "permissions": [
+    "storage",
+    "tabs",
+    "activeTab",
+    "sidePanel"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "side_panel": {
+    "default_path": "src/sidepanel/index.html"
+  },
+  "commands": {
+    "add-to-read": {
+      "suggested_key": {
+        "default": "Alt+Shift+S",
+        "mac": "Alt+Shift+S"
+      },
+      "description": "将当前页面添加到待阅读列表"
+    },
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Alt+Shift+R",
+        "mac": "Alt+Shift+R"
+      },
+      "description": "打开/关闭 ToRead 侧边栏"
+    }
+  },
+  "action": {
+    "default_title": "ToRead - 打开待阅读列表"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
