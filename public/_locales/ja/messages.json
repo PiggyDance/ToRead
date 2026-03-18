@@ -1,0 +1,56 @@
+{
+  "appSlogan": { "message": "あとで読む、見逃さない" },
+  "emptyTitle": { "message": "リストは空です" },
+  "emptyTitleFiltered": { "message": "条件に一致する記事がありません" },
+  "emptyHintFiltered": { "message": "フィルターを切り替えてみてください" },
+  "clearRead": { "message": "既読を削除" },
+  "addCurrentPage": { "message": "現在のページを追加" },
+  "filterAll": { "message": "すべて" },
+  "filterUnread": { "message": "未読" },
+  "filterRead": { "message": "既読" },
+  "shortcutPrefix": { "message": "" },
+  "shortcutSuffix": { "message": "を押すか、追加ボタンでページを追加" },
+  "markAsRead": { "message": "既読にする" },
+  "markAsUnread": { "message": "未読にする" },
+  "remove": { "message": "削除" },
+  "timeJustNow": { "message": "たった今" },
+  "timeMinutesAgo": {
+    "message": "$N$ 分前",
+    "placeholders": { "n": { "content": "$1" } }
+  },
+  "timeHoursAgo": {
+    "message": "$N$ 時間前",
+    "placeholders": { "n": { "content": "$1" } }
+  },
+  "timeDaysAgo": {
+    "message": "$N$ 日前",
+    "placeholders": { "n": { "content": "$1" } }
+  },
+  "summaryGenerating": { "message": "要約を生成中…" },
+  "searchPlaceholder": { "message": "タイトルやサイトを検索…" },
+  "emptyTitleSearch": { "message": "一致する結果がありません" },
+  "emptyHintSearch": { "message": "別のキーワードをお試しください" },
+  "extName": { "message": "ToRead" },
+  "extDescription": { "message": "現在のページをあとで読むリストに追加します" },
+  "cmdAddToRead": { "message": "現在のページをあとで読むリストに追加" },
+  "cmdOpenPanel": { "message": "ToRead サイドパネルを開く/閉じる" },
+  "actionTitle": { "message": "ToRead - あとで読むリストを開く" },
+
+  "demoItem1Title": { "message": "👋 ToRead へようこそ！右上の + またはショートカットでページを追加" },
+  "demoItem1Summary": { "message": "カードの ✓ で既読、D で削除、J/K で上下移動、Enter でページを開きます。" },
+  "demoItem1Tag": { "message": "ガイド" },
+
+  "demoItem2Title": { "message": "🏷️ タグ機能：記事にタグを付けてフィルタリング" },
+  "demoItem2Summary": { "message": "カードにホバーしてタグアイコンをクリックするとタグを追加できます。タグをクリックするとフィルタリングできます。" },
+  "demoItem2Tag": { "message": "デモ" },
+
+  "demoItem3Title": { "message": "🔍 検索：検索ボックスにキーワードを入力してタイトルやサイトを絞り込む" },
+  "demoItem3Summary": { "message": "タイトルとドメインのあいまい検索に対応。タグフィルターと組み合わせて使えます（AND 条件）。" },
+  "demoItem3Tag": { "message": "デモ" },
+
+  "demoItem4Title": { "message": "✅ 既読サンプル — 既読にするとグレーになり「既読を削除」でまとめて削除できます" },
+  "demoItem4Summary": { "message": "✓ ボタンまたは R キーで既読にできます。既読アイテムは薄く表示されます。" },
+
+  "dailyRecommendTitle": { "message": "📖 ToRead 今日のおすすめ" },
+  "dailyRecommendButton": { "message": "今すぐ読む" }
+}

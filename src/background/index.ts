@@ -87,147 +87,48 @@ async function doAddCurrentPage(tab: chrome.tabs.Tab): Promise<void> {
 // ---- 首次安装演示数据 ----
 
 function buildDemoItems(): ReadItem[] {
-  const lang = chrome.i18n.getUILanguage().toLowerCase();
-  const isChinese = lang.startsWith('zh');
-  const isJapanese = lang.startsWith('ja');
-  const isKorean = lang.startsWith('ko');
+  const m = (key: string) => chrome.i18n.getMessage(key);
 
   const now = Date.now();
   const day = 24 * 60 * 60 * 1000;
 
-  if (isChinese) {
-    return [
-      {
-        id: crypto.randomUUID(),
-        title: '👋 欢迎使用 ToRead！点击右上角 + 或快捷键，把当前页面加入列表',
-        url: 'https://github.com/nicehash/NiceHashQuickMiner',
-        favicon: '',
-        summary: '点击卡片右侧的 ✓ 标记已读，按 D 删除，按 J/K 上下导航，按 Enter 打开页面。',
-        createdAt: new Date(now - 1 * day).toISOString(),
-        isRead: false,
-        tags: ['使用指南'],
-      },
-      {
-        id: crypto.randomUUID(),
-        title: '🏷️ Tag 分类：给文章打标签，点击 Tag 可过滤同类内容',
-        url: 'https://developer.chrome.com/docs/extensions',
-        favicon: 'https://www.google.com/favicon.ico',
-        summary: '悬停卡片，点击右侧标签图标即可添加 Tag。点击 Tag 可按标签过滤，与搜索框同时生效（AND 关系）。',
-        createdAt: new Date(now - 2 * day).toISOString(),
-        isRead: false,
-        tags: ['功能演示'],
-      },
-      {
-        id: crypto.randomUUID(),
-        title: '🔍 搜索过滤：在顶部搜索框输入关键词，实时过滤标题和网站',
-        url: 'https://react.dev',
-        favicon: 'https://react.dev/favicon.ico',
-        summary: '支持标题和域名的模糊匹配。搜索与 Tag 过滤可同时使用，取两者交集。',
-        createdAt: new Date(now - 3 * day).toISOString(),
-        isRead: false,
-        tags: ['功能演示'],
-      },
-      {
-        id: crypto.randomUUID(),
-        title: '✅ 这是一条已读示例 — 标记已读后会变灰，可用"清除已读"批量删除',
-        url: 'https://vitejs.dev',
-        favicon: 'https://vitejs.dev/logo.svg',
-        summary: '点击卡片右侧的 ✓ 按钮标记已读，或按键盘 R 键。已读条目会降低透明度显示在列表中。',
-        createdAt: new Date(now - 4 * day).toISOString(),
-        isRead: true,
-        tags: [],
-      },
-    ];
-  }
-
-  if (isJapanese) {
-    return [
-      {
-        id: crypto.randomUUID(),
-        title: '👋 ToRead へようこそ！右上の + またはショートカットでページを追加',
-        url: 'https://github.com',
-        favicon: '',
-        summary: 'カードの ✓ で既読、D で削除、J/K で上下移動、Enter でページを開きます。',
-        createdAt: new Date(now - 1 * day).toISOString(),
-        isRead: false,
-        tags: ['ガイド'],
-      },
-      {
-        id: crypto.randomUUID(),
-        title: '🏷️ タグ機能：記事にタグを付けてフィルタリング',
-        url: 'https://developer.chrome.com/docs/extensions',
-        favicon: 'https://www.google.com/favicon.ico',
-        summary: 'カードにホバーしてタグアイコンをクリックするとタグを追加できます。',
-        createdAt: new Date(now - 2 * day).toISOString(),
-        isRead: false,
-        tags: ['デモ'],
-      },
-    ];
-  }
-
-  if (isKorean) {
-    return [
-      {
-        id: crypto.randomUUID(),
-        title: '👋 ToRead에 오신 것을 환영합니다! 우측 상단 + 또는 단축키로 페이지 추가',
-        url: 'https://github.com',
-        favicon: '',
-        summary: '카드의 ✓ 로 읽음 표시, D 로 삭제, J/K 로 이동, Enter 로 페이지 열기.',
-        createdAt: new Date(now - 1 * day).toISOString(),
-        isRead: false,
-        tags: ['가이드'],
-      },
-      {
-        id: crypto.randomUUID(),
-        title: '🏷️ 태그 기능: 기사에 태그를 달고 필터링하기',
-        url: 'https://developer.chrome.com/docs/extensions',
-        favicon: 'https://www.google.com/favicon.ico',
-        summary: '카드에 마우스를 올리고 태그 아이콘을 클릭하면 태그를 추가할 수 있습니다.',
-        createdAt: new Date(now - 2 * day).toISOString(),
-        isRead: false,
-        tags: ['데모'],
-      },
-    ];
-  }
-
-  // English (default)
   return [
     {
       id: crypto.randomUUID(),
-      title: '👋 Welcome to ToRead! Click + in the top-right or use the shortcut to save pages',
+      title: m('demoItem1Title'),
       url: 'https://github.com',
       favicon: '',
-      summary: 'Click ✓ to mark as read, D to delete, J/K to navigate, Enter to open. Try it now!',
+      summary: m('demoItem1Summary'),
       createdAt: new Date(now - 1 * day).toISOString(),
       isRead: false,
-      tags: ['guide'],
+      tags: [m('demoItem1Tag')],
     },
     {
       id: crypto.randomUUID(),
-      title: '🏷️ Tags: Label articles and click a tag to filter by it',
+      title: m('demoItem2Title'),
       url: 'https://developer.chrome.com/docs/extensions',
       favicon: 'https://www.google.com/favicon.ico',
-      summary: 'Hover a card and click the tag icon to add tags. Click any tag to filter. Works together with search (AND logic).',
+      summary: m('demoItem2Summary'),
       createdAt: new Date(now - 2 * day).toISOString(),
       isRead: false,
-      tags: ['demo'],
+      tags: [m('demoItem2Tag')],
     },
     {
       id: crypto.randomUUID(),
-      title: '🔍 Search: Type in the search box to filter by title or site',
+      title: m('demoItem3Title'),
       url: 'https://react.dev',
       favicon: 'https://react.dev/favicon.ico',
-      summary: 'Fuzzy match on title and domain. Combine with tag filter for precise results.',
+      summary: m('demoItem3Summary'),
       createdAt: new Date(now - 3 * day).toISOString(),
       isRead: false,
-      tags: ['demo'],
+      tags: [m('demoItem3Tag')],
     },
     {
       id: crypto.randomUUID(),
-      title: '✅ This is a read example — marked items fade out, use "Clear read" to remove them',
+      title: m('demoItem4Title'),
       url: 'https://vitejs.dev',
       favicon: 'https://vitejs.dev/logo.svg',
-      summary: 'Click ✓ or press R to mark as read. Read items stay visible but dimmed.',
+      summary: m('demoItem4Summary'),
       createdAt: new Date(now - 4 * day).toISOString(),
       isRead: true,
       tags: [],
@@ -326,12 +227,12 @@ async function maybeShowDailyRecommend(): Promise<void> {
   chrome.notifications.create(`toread_recommend_${pick.id}`, {
     type: 'basic',
     iconUrl: pick.favicon || 'icons/icon48.png',
-    title: '📖 ToRead 每日推荐',
+    title: chrome.i18n.getMessage('dailyRecommendTitle'),
     message: pick.title,
     contextMessage: (() => {
       try { return new URL(pick.url).hostname.replace(/^www\./, ''); } catch { return ''; }
     })(),
-    buttons: [{ title: '立即阅读' }],
+    buttons: [{ title: chrome.i18n.getMessage('dailyRecommendButton') }],
     requireInteraction: false,
   });
 

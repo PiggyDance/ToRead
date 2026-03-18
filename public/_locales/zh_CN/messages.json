@@ -1,0 +1,56 @@
+{
+  "appSlogan": { "message": "稍后读，不错过" },
+  "emptyTitle": { "message": "待阅读列表为空" },
+  "emptyTitleFiltered": { "message": "没有符合筛选条件的文章" },
+  "emptyHintFiltered": { "message": "试试切换筛选条件" },
+  "clearRead": { "message": "清除已读" },
+  "addCurrentPage": { "message": "添加当前页面" },
+  "filterAll": { "message": "全部" },
+  "filterUnread": { "message": "未读" },
+  "filterRead": { "message": "已读" },
+  "shortcutPrefix": { "message": "按" },
+  "shortcutSuffix": { "message": "或点击添加按钮，将当前页面加入列表" },
+  "markAsRead": { "message": "标记为已读" },
+  "markAsUnread": { "message": "标记为未读" },
+  "remove": { "message": "删除" },
+  "timeJustNow": { "message": "刚刚" },
+  "timeMinutesAgo": {
+    "message": "$N$ 分钟前",
+    "placeholders": { "n": { "content": "$1" } }
+  },
+  "timeHoursAgo": {
+    "message": "$N$ 小时前",
+    "placeholders": { "n": { "content": "$1" } }
+  },
+  "timeDaysAgo": {
+    "message": "$N$ 天前",
+    "placeholders": { "n": { "content": "$1" } }
+  },
+  "summaryGenerating": { "message": "正在生成摘要…" },
+  "searchPlaceholder": { "message": "搜索标题或网站…" },
+  "emptyTitleSearch": { "message": "没有匹配的结果" },
+  "emptyHintSearch": { "message": "试试其他关键词" },
+  "extName": { "message": "ToRead" },
+  "extDescription": { "message": "将当前页面添加到待阅读列表，方便稍后阅读" },
+  "cmdAddToRead": { "message": "将当前页面添加到待阅读列表" },
+  "cmdOpenPanel": { "message": "打开/关闭 ToRead 侧边栏" },
+  "actionTitle": { "message": "ToRead - 打开待阅读列表" },
+
+  "demoItem1Title": { "message": "👋 欢迎使用 ToRead！点击右上角 + 或快捷键，把当前页面加入列表" },
+  "demoItem1Summary": { "message": "点击卡片右侧的 ✓ 标记已读，按 D 删除，按 J/K 上下导航，按 Enter 打开页面。" },
+  "demoItem1Tag": { "message": "使用指南" },
+
+  "demoItem2Title": { "message": "🏷️ Tag 分类：给文章打标签，点击 Tag 可过滤同类内容" },
+  "demoItem2Summary": { "message": "悬停卡片，点击右侧标签图标即可添加 Tag。点击 Tag 可按标签过滤，与搜索框同时生效（AND 关系）。" },
+  "demoItem2Tag": { "message": "功能演示" },
+
+  "demoItem3Title": { "message": "🔍 搜索过滤：在顶部搜索框输入关键词，实时过滤标题和网站" },
+  "demoItem3Summary": { "message": "支持标题和域名的模糊匹配。搜索与 Tag 过滤可同时使用，取两者交集。" },
+  "demoItem3Tag": { "message": "功能演示" },
+
+  "demoItem4Title": { "message": "✅ 这是一条已读示例 — 标记已读后会变灰，可用"清除已读"批量删除" },
+  "demoItem4Summary": { "message": "点击卡片右侧的 ✓ 按钮标记已读，或按键盘 R 键。已读条目会降低透明度显示在列表中。" },
+
+  "dailyRecommendTitle": { "message": "📖 ToRead 每日推荐" },
+  "dailyRecommendButton": { "message": "立即阅读" }
+}

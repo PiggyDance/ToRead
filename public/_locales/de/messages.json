@@ -1,0 +1,56 @@
+{
+  "appSlogan": { "message": "Später lesen, nichts verpassen" },
+  "emptyTitle": { "message": "Deine Leseliste ist leer" },
+  "emptyTitleFiltered": { "message": "Keine Einträge entsprechen dem Filter" },
+  "emptyHintFiltered": { "message": "Versuche den Filter zu wechseln" },
+  "clearRead": { "message": "Gelesene löschen" },
+  "addCurrentPage": { "message": "Aktuelle Seite hinzufügen" },
+  "filterAll": { "message": "Alle" },
+  "filterUnread": { "message": "Ungelesen" },
+  "filterRead": { "message": "Gelesen" },
+  "shortcutPrefix": { "message": "Drücke" },
+  "shortcutSuffix": { "message": "oder klicke den Hinzufügen-Button, um diese Seite hinzuzufügen" },
+  "markAsRead": { "message": "Als gelesen markieren" },
+  "markAsUnread": { "message": "Als ungelesen markieren" },
+  "remove": { "message": "Entfernen" },
+  "timeJustNow": { "message": "Gerade eben" },
+  "timeMinutesAgo": {
+    "message": "vor $N$ Min.",
+    "placeholders": { "n": { "content": "$1" } }
+  },
+  "timeHoursAgo": {
+    "message": "vor $N$ Std.",
+    "placeholders": { "n": { "content": "$1" } }
+  },
+  "timeDaysAgo": {
+    "message": "vor $N$ Tagen",
+    "placeholders": { "n": { "content": "$1" } }
+  },
+  "summaryGenerating": { "message": "Zusammenfassung wird erstellt…" },
+  "searchPlaceholder": { "message": "Titel oder Website suchen…" },
+  "emptyTitleSearch": { "message": "Keine übereinstimmenden Ergebnisse" },
+  "emptyHintSearch": { "message": "Versuche ein anderes Stichwort" },
+  "extName": { "message": "ToRead" },
+  "extDescription": { "message": "Füge die aktuelle Seite zu deiner Leseliste hinzu" },
+  "cmdAddToRead": { "message": "Aktuelle Seite zur Leseliste hinzufügen" },
+  "cmdOpenPanel": { "message": "ToRead-Seitenleiste öffnen/schließen" },
+  "actionTitle": { "message": "ToRead - Leseliste öffnen" },
+
+  "demoItem1Title": { "message": "👋 Willkommen bei ToRead! Klicke auf + oben rechts oder nutze den Shortcut zum Speichern" },
+  "demoItem1Summary": { "message": "Klicke ✓ zum Markieren als gelesen, D zum Löschen, J/K zum Navigieren, Enter zum Öffnen." },
+  "demoItem1Tag": { "message": "Anleitung" },
+
+  "demoItem2Title": { "message": "🏷️ Tags: Artikel mit Tags versehen und auf einen Tag klicken zum Filtern" },
+  "demoItem2Summary": { "message": "Fahre über eine Karte und klicke das Tag-Symbol zum Hinzufügen. Klicke einen Tag zum Filtern, kombinierbar mit Suche (UND)." },
+  "demoItem2Tag": { "message": "Demo" },
+
+  "demoItem3Title": { "message": "🔍 Suche: Tippe in die Suchleiste, um nach Titel oder Website zu filtern" },
+  "demoItem3Summary": { "message": "Unscharfe Suche nach Titel und Domain. Kombiniere mit Tag-Filter für präzise Ergebnisse." },
+  "demoItem3Tag": { "message": "Demo" },
+
+  "demoItem4Title": { "message": "✅ Beispiel gelesen — gelesene Einträge werden gedimmt, nutze «Gelesene löschen» zum Entfernen" },
+  "demoItem4Summary": { "message": "Klicke ✓ oder drücke R zum Markieren als gelesen. Gelesene Einträge bleiben sichtbar, aber gedimmt." },
+
+  "dailyRecommendTitle": { "message": "📖 ToRead Empfehlung des Tages" },
+  "dailyRecommendButton": { "message": "Jetzt lesen" }
+}

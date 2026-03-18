@@ -1,0 +1,56 @@
+{
+  "appSlogan": { "message": "Đọc sau, không bỏ lỡ" },
+  "emptyTitle": { "message": "Danh sách đọc trống" },
+  "emptyTitleFiltered": { "message": "Không có mục nào phù hợp" },
+  "emptyHintFiltered": { "message": "Thử chuyển bộ lọc khác" },
+  "clearRead": { "message": "Xóa đã đọc" },
+  "addCurrentPage": { "message": "Thêm trang hiện tại" },
+  "filterAll": { "message": "Tất cả" },
+  "filterUnread": { "message": "Chưa đọc" },
+  "filterRead": { "message": "Đã đọc" },
+  "shortcutPrefix": { "message": "Nhấn" },
+  "shortcutSuffix": { "message": "hoặc nhấn nút thêm để thêm trang này" },
+  "markAsRead": { "message": "Đánh dấu đã đọc" },
+  "markAsUnread": { "message": "Đánh dấu chưa đọc" },
+  "remove": { "message": "Xóa" },
+  "timeJustNow": { "message": "Vừa xong" },
+  "timeMinutesAgo": {
+    "message": "$N$ phút trước",
+    "placeholders": { "n": { "content": "$1" } }
+  },
+  "timeHoursAgo": {
+    "message": "$N$ giờ trước",
+    "placeholders": { "n": { "content": "$1" } }
+  },
+  "timeDaysAgo": {
+    "message": "$N$ ngày trước",
+    "placeholders": { "n": { "content": "$1" } }
+  },
+  "summaryGenerating": { "message": "Đang tạo tóm tắt…" },
+  "searchPlaceholder": { "message": "Tìm kiếm tiêu đề hoặc trang web…" },
+  "emptyTitleSearch": { "message": "Không có kết quả phù hợp" },
+  "emptyHintSearch": { "message": "Thử từ khóa khác" },
+  "extName": { "message": "ToRead" },
+  "extDescription": { "message": "Thêm trang hiện tại vào danh sách đọc sau" },
+  "cmdAddToRead": { "message": "Thêm trang hiện tại vào danh sách đọc sau" },
+  "cmdOpenPanel": { "message": "Mở/đóng bảng bên ToRead" },
+  "actionTitle": { "message": "ToRead - Mở danh sách đọc sau" },
+
+  "demoItem1Title": { "message": "👋 Chào mừng đến với ToRead! Nhấn + góc trên phải hoặc phím tắt để lưu trang" },
+  "demoItem1Summary": { "message": "Nhấn ✓ để đánh dấu đã đọc, D để xóa, J/K để điều hướng, Enter để mở trang." },
+  "demoItem1Tag": { "message": "hướng dẫn" },
+
+  "demoItem2Title": { "message": "🏷️ Thẻ: Gắn thẻ bài viết và nhấn thẻ để lọc nội dung" },
+  "demoItem2Summary": { "message": "Di chuột qua thẻ và nhấn biểu tượng thẻ để thêm. Nhấn thẻ để lọc, kết hợp với tìm kiếm (AND)." },
+  "demoItem2Tag": { "message": "demo" },
+
+  "demoItem3Title": { "message": "🔍 Tìm kiếm: Nhập từ khóa để lọc theo tiêu đề hoặc trang web" },
+  "demoItem3Summary": { "message": "Hỗ trợ tìm kiếm mờ theo tiêu đề và tên miền. Kết hợp với bộ lọc thẻ để có kết quả chính xác hơn." },
+  "demoItem3Tag": { "message": "demo" },
+
+  "demoItem4Title": { "message": "✅ Ví dụ đã đọc — mục đã đọc sẽ mờ đi, dùng 'Xóa đã đọc' để xóa hàng loạt" },
+  "demoItem4Summary": { "message": "Nhấn ✓ hoặc phím R để đánh dấu đã đọc. Mục đã đọc hiển thị mờ trong danh sách." },
+
+  "dailyRecommendTitle": { "message": "📖 ToRead Gợi ý hôm nay" },
+  "dailyRecommendButton": { "message": "Đọc ngay" }
+}

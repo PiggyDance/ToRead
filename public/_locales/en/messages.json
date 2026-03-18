@@ -1,0 +1,56 @@
+{
+  "appSlogan": { "message": "Read later, miss nothing" },
+  "emptyTitle": { "message": "Your reading list is empty" },
+  "emptyTitleFiltered": { "message": "No items match the filter" },
+  "emptyHintFiltered": { "message": "Try switching the filter" },
+  "clearRead": { "message": "Clear read" },
+  "addCurrentPage": { "message": "Add current page" },
+  "filterAll": { "message": "All" },
+  "filterUnread": { "message": "Unread" },
+  "filterRead": { "message": "Read" },
+  "shortcutPrefix": { "message": "Press" },
+  "shortcutSuffix": { "message": "or click the add button to save this page" },
+  "markAsRead": { "message": "Mark as read" },
+  "markAsUnread": { "message": "Mark as unread" },
+  "remove": { "message": "Remove" },
+  "timeJustNow": { "message": "Just now" },
+  "timeMinutesAgo": {
+    "message": "$N$m ago",
+    "placeholders": { "n": { "content": "$1" } }
+  },
+  "timeHoursAgo": {
+    "message": "$N$h ago",
+    "placeholders": { "n": { "content": "$1" } }
+  },
+  "timeDaysAgo": {
+    "message": "$N$d ago",
+    "placeholders": { "n": { "content": "$1" } }
+  },
+  "summaryGenerating": { "message": "Generating summary…" },
+  "searchPlaceholder": { "message": "Search title or site…" },
+  "emptyTitleSearch": { "message": "No matching results" },
+  "emptyHintSearch": { "message": "Try a different keyword" },
+  "extName": { "message": "ToRead" },
+  "extDescription": { "message": "Add the current page to your reading list for later" },
+  "cmdAddToRead": { "message": "Add current page to reading list" },
+  "cmdOpenPanel": { "message": "Open/close ToRead side panel" },
+  "actionTitle": { "message": "ToRead - Open reading list" },
+
+  "demoItem1Title": { "message": "👋 Welcome to ToRead! Click + in the top-right or use the shortcut to save pages" },
+  "demoItem1Summary": { "message": "Click ✓ to mark as read, D to delete, J/K to navigate, Enter to open. Try it now!" },
+  "demoItem1Tag": { "message": "guide" },
+
+  "demoItem2Title": { "message": "🏷️ Tags: Label articles and click a tag to filter by it" },
+  "demoItem2Summary": { "message": "Hover a card and click the tag icon to add tags. Click any tag to filter. Works together with search (AND logic)." },
+  "demoItem2Tag": { "message": "demo" },
+
+  "demoItem3Title": { "message": "🔍 Search: Type in the search box to filter by title or site" },
+  "demoItem3Summary": { "message": "Fuzzy match on title and domain. Combine with tag filter for precise results." },
+  "demoItem3Tag": { "message": "demo" },
+
+  "demoItem4Title": { "message": "✅ This is a read example — marked items fade out, use \"Clear read\" to remove them" },
+  "demoItem4Summary": { "message": "Click ✓ or press R to mark as read. Read items stay visible but dimmed." },
+
+  "dailyRecommendTitle": { "message": "📖 ToRead Daily Pick" },
+  "dailyRecommendButton": { "message": "Read now" }
+}

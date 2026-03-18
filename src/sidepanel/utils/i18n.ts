@@ -1,308 +1,41 @@
-type Locale = {
-  appSlogan: string;
-  emptyTitle: string;
-  emptyTitleFiltered: string;
-  emptyHintFiltered: string;
-  clearRead: string;
-  addCurrentPage: string;
-  filterAll: string;
-  filterUnread: string;
-  filterRead: string;
-  shortcutPrefix: string;
-  shortcutSuffix: string;
-  markAsRead: string;
-  markAsUnread: string;
-  remove: string;
-  timeJustNow: string;
-  timeMinutesAgo: (n: number) => string;
-  timeHoursAgo: (n: number) => string;
-  timeDaysAgo: (n: number) => string;
-  summaryGenerating: string;
-  searchPlaceholder: string;
-  emptyTitleSearch: string;
-  emptyHintSearch: string;
-};
+/**
+ * 薄封装 chrome.i18n.getMessage，提供类型安全的翻译访问。
+ * 所有翻译字符串均存储在 public/_locales/{locale}/messages.json 中，
+ * 由 Chrome 扩展 i18n API 根据浏览器语言自动选择。
+ */
 
-const locales: Record<string, Locale> = {
-  'zh-hans': {
-    appSlogan: '稍后读，不错过',
-    emptyTitle: '待阅读列表为空',
-    emptyTitleFiltered: '没有符合筛选条件的文章',
-    emptyHintFiltered: '试试切换筛选条件',
-    clearRead: '清除已读',
-    addCurrentPage: '添加当前页面',
-    filterAll: '全部',
-    filterUnread: '未读',
-    filterRead: '已读',
-    shortcutPrefix: '按',
-    shortcutSuffix: '或点击添加按钮，将当前页面加入列表',
-    markAsRead: '标记为已读',
-    markAsUnread: '标记为未读',
-    remove: '删除',
-    timeJustNow: '刚刚',
-    timeMinutesAgo: (n) => `${n} 分钟前`,
-    timeHoursAgo: (n) => `${n} 小时前`,
-    timeDaysAgo: (n) => `${n} 天前`,
-    summaryGenerating: '正在生成摘要…',
-    searchPlaceholder: '搜索标题或网站…',
-    emptyTitleSearch: '没有匹配的结果',
-    emptyHintSearch: '试试其他关键词',
-  },
-  'zh-hant': {
-    appSlogan: '稍後讀，不錯過',
-    emptyTitle: '待閱讀清單為空',
-    emptyTitleFiltered: '沒有符合篩選條件的文章',
-    emptyHintFiltered: '試試切換篩選條件',
-    clearRead: '清除已讀',
-    addCurrentPage: '新增目前頁面',
-    filterAll: '全部',
-    filterUnread: '未讀',
-    filterRead: '已讀',
-    shortcutPrefix: '按',
-    shortcutSuffix: '或點擊添加按鈕，將目前頁面加入清單',
-    markAsRead: '標記為已讀',
-    markAsUnread: '標記為未讀',
-    remove: '刪除',
-    timeJustNow: '剛剛',
-    timeMinutesAgo: (n) => `${n} 分鐘前`,
-    timeHoursAgo: (n) => `${n} 小時前`,
-    timeDaysAgo: (n) => `${n} 天前`,
-    summaryGenerating: '正在生成摘要…',
-    searchPlaceholder: '搜尋標題或網站…',
-    emptyTitleSearch: '沒有符合的結果',
-    emptyHintSearch: '試試其他關鍵字',
-  },
-  ja: {
-    appSlogan: 'あとで読む、見逃さない',
-    emptyTitle: 'リストは空です',
-    emptyTitleFiltered: '条件に一致する記事がありません',
-    emptyHintFiltered: 'フィルターを切り替えてみてください',
-    clearRead: '既読を削除',
-    addCurrentPage: '現在のページを追加',
-    filterAll: 'すべて',
-    filterUnread: '未読',
-    filterRead: '既読',
-    shortcutPrefix: '',
-    shortcutSuffix: 'を押すか、追加ボタンでページを追加',
-    markAsRead: '既読にする',
-    markAsUnread: '未読にする',
-    remove: '削除',
-    timeJustNow: 'たった今',
-    timeMinutesAgo: (n) => `${n} 分前`,
-    timeHoursAgo: (n) => `${n} 時間前`,
-    timeDaysAgo: (n) => `${n} 日前`,
-    summaryGenerating: '要約を生成中…',
-    searchPlaceholder: 'タイトルやサイトを検索…',
-    emptyTitleSearch: '一致する結果がありません',
-    emptyHintSearch: '別のキーワードをお試しください',
-  },
-  ko: {
-    appSlogan: '나중에 읽고, 놓치지 않기',
-    emptyTitle: '읽기 목록이 비어 있습니다',
-    emptyTitleFiltered: '조건에 맞는 항목이 없습니다',
-    emptyHintFiltered: '필터를 변경해 보세요',
-    clearRead: '읽은 항목 삭제',
-    addCurrentPage: '현재 페이지 추가',
-    filterAll: '전체',
-    filterUnread: '안 읽음',
-    filterRead: '읽음',
-    shortcutPrefix: '',
-    shortcutSuffix: '를 누르거나 추가 버튼으로 페이지를 추가하세요',
-    markAsRead: '읽음으로 표시',
-    markAsUnread: '안 읽음으로 표시',
-    remove: '삭제',
-    timeJustNow: '방금',
-    timeMinutesAgo: (n) => `${n}분 전`,
-    timeHoursAgo: (n) => `${n}시간 전`,
-    timeDaysAgo: (n) => `${n}일 전`,
-    summaryGenerating: '요약 생성 중…',
-    searchPlaceholder: '제목 또는 사이트 검색…',
-    emptyTitleSearch: '일치하는 결과가 없습니다',
-    emptyHintSearch: '다른 키워드를 시도해 보세요',
-  },
-  th: {
-    appSlogan: 'อ่านทีหลัง ไม่พลาดสักชิ้น',
-    emptyTitle: 'รายการอ่านว่างเปล่า',
-    emptyTitleFiltered: 'ไม่มีรายการที่ตรงกับตัวกรอง',
-    emptyHintFiltered: 'ลองเปลี่ยนตัวกรอง',
-    clearRead: 'ล้างที่อ่านแล้ว',
-    addCurrentPage: 'เพิ่มหน้านี้',
-    filterAll: 'ทั้งหมด',
-    filterUnread: 'ยังไม่อ่าน',
-    filterRead: 'อ่านแล้ว',
-    shortcutPrefix: 'กด',
-    shortcutSuffix: 'หรือคลิกปุ่มเพิ่มเพื่อเพิ่มหน้านี้',
-    markAsRead: 'ทำเครื่องหมายว่าอ่านแล้ว',
-    markAsUnread: 'ทำเครื่องหมายว่ายังไม่อ่าน',
-    remove: 'ลบ',
-    timeJustNow: 'เมื่อกี้',
-    timeMinutesAgo: (n) => `${n} นาทีที่แล้ว`,
-    timeHoursAgo: (n) => `${n} ชั่วโมงที่แล้ว`,
-    timeDaysAgo: (n) => `${n} วันที่แล้ว`,
-    summaryGenerating: 'กำลังสร้างสรุป…',
-    searchPlaceholder: 'ค้นหาชื่อหรือเว็บไซต์…',
-    emptyTitleSearch: 'ไม่พบผลลัพธ์ที่ตรงกัน',
-    emptyHintSearch: 'ลองใช้คำค้นหาอื่น',
-  },
-  vi: {
-    appSlogan: 'Đọc sau, không bỏ lỡ',
-    emptyTitle: 'Danh sách đọc trống',
-    emptyTitleFiltered: 'Không có mục nào phù hợp',
-    emptyHintFiltered: 'Thử chuyển bộ lọc khác',
-    clearRead: 'Xóa đã đọc',
-    addCurrentPage: 'Thêm trang hiện tại',
-    filterAll: 'Tất cả',
-    filterUnread: 'Chưa đọc',
-    filterRead: 'Đã đọc',
-    shortcutPrefix: 'Nhấn',
-    shortcutSuffix: 'hoặc nhấn nút thêm để thêm trang này',
-    markAsRead: 'Đánh dấu đã đọc',
-    markAsUnread: 'Đánh dấu chưa đọc',
-    remove: 'Xóa',
-    timeJustNow: 'Vừa xong',
-    timeMinutesAgo: (n) => `${n} phút trước`,
-    timeHoursAgo: (n) => `${n} giờ trước`,
-    timeDaysAgo: (n) => `${n} ngày trước`,
-    summaryGenerating: 'Đang tạo tóm tắt…',
-    searchPlaceholder: 'Tìm kiếm tiêu đề hoặc trang web…',
-    emptyTitleSearch: 'Không có kết quả phù hợp',
-    emptyHintSearch: 'Thử từ khóa khác',
-  },
-  fr: {
-    appSlogan: 'Lire plus tard, ne rien manquer',
-    emptyTitle: 'Votre liste de lecture est vide',
-    emptyTitleFiltered: 'Aucun élément ne correspond au filtre',
-    emptyHintFiltered: 'Essayez de changer le filtre',
-    clearRead: 'Effacer les lus',
-    addCurrentPage: 'Ajouter la page actuelle',
-    filterAll: 'Tout',
-    filterUnread: 'Non lu',
-    filterRead: 'Lu',
-    shortcutPrefix: 'Appuyez sur',
-    shortcutSuffix: 'ou cliquez sur le bouton d\'ajout pour ajouter cette page',
-    markAsRead: 'Marquer comme lu',
-    markAsUnread: 'Marquer comme non lu',
-    remove: 'Supprimer',
-    timeJustNow: "À l'instant",
-    timeMinutesAgo: (n) => `il y a ${n} min`,
-    timeHoursAgo: (n) => `il y a ${n} h`,
-    timeDaysAgo: (n) => `il y a ${n} j`,
-    summaryGenerating: 'Génération du résumé…',
-    searchPlaceholder: 'Rechercher un titre ou un site…',
-    emptyTitleSearch: 'Aucun résultat correspondant',
-    emptyHintSearch: 'Essayez un autre mot-clé',
-  },
-  es: {
-    appSlogan: 'Lee después, no te pierdas nada',
-    emptyTitle: 'Tu lista de lectura está vacía',
-    emptyTitleFiltered: 'Ningún elemento coincide con el filtro',
-    emptyHintFiltered: 'Prueba a cambiar el filtro',
-    clearRead: 'Borrar leídos',
-    addCurrentPage: 'Añadir página actual',
-    filterAll: 'Todo',
-    filterUnread: 'No leído',
-    filterRead: 'Leído',
-    shortcutPrefix: 'Pulsa',
-    shortcutSuffix: 'o haz clic en el botón de añadir para añadir esta página',
-    markAsRead: 'Marcar como leído',
-    markAsUnread: 'Marcar como no leído',
-    remove: 'Eliminar',
-    timeJustNow: 'Ahora mismo',
-    timeMinutesAgo: (n) => `hace ${n} min`,
-    timeHoursAgo: (n) => `hace ${n} h`,
-    timeDaysAgo: (n) => `hace ${n} días`,
-    summaryGenerating: 'Generando resumen…',
-    searchPlaceholder: 'Buscar título o sitio…',
-    emptyTitleSearch: 'Sin resultados coincidentes',
-    emptyHintSearch: 'Prueba con otra palabra clave',
-  },
-  ru: {
-    appSlogan: 'Читай позже, не пропускай',
-    emptyTitle: 'Список чтения пуст',
-    emptyTitleFiltered: 'Нет элементов, соответствующих фильтру',
-    emptyHintFiltered: 'Попробуйте изменить фильтр',
-    clearRead: 'Очистить прочитанное',
-    addCurrentPage: 'Добавить текущую страницу',
-    filterAll: 'Все',
-    filterUnread: 'Непрочитанное',
-    filterRead: 'Прочитанное',
-    shortcutPrefix: 'Нажмите',
-    shortcutSuffix: 'или кнопку добавления, чтобы добавить эту страницу',
-    markAsRead: 'Отметить как прочитанное',
-    markAsUnread: 'Отметить как непрочитанное',
-    remove: 'Удалить',
-    timeJustNow: 'Только что',
-    timeMinutesAgo: (n) => `${n} мин назад`,
-    timeHoursAgo: (n) => `${n} ч назад`,
-    timeDaysAgo: (n) => `${n} дн назад`,
-    summaryGenerating: 'Создание резюме…',
-    searchPlaceholder: 'Поиск по заголовку или сайту…',
-    emptyTitleSearch: 'Нет совпадающих результатов',
-    emptyHintSearch: 'Попробуйте другое ключевое слово',
-  },
-  de: {
-    appSlogan: 'Später lesen, nichts verpassen',
-    emptyTitle: 'Deine Leseliste ist leer',
-    emptyTitleFiltered: 'Keine Einträge entsprechen dem Filter',
-    emptyHintFiltered: 'Versuche den Filter zu wechseln',
-    clearRead: 'Gelesene löschen',
-    addCurrentPage: 'Aktuelle Seite hinzufügen',
-    filterAll: 'Alle',
-    filterUnread: 'Ungelesen',
-    filterRead: 'Gelesen',
-    shortcutPrefix: 'Drücke',
-    shortcutSuffix: 'oder klicke den Hinzufügen-Button, um diese Seite hinzuzufügen',
-    markAsRead: 'Als gelesen markieren',
-    markAsUnread: 'Als ungelesen markieren',
-    remove: 'Entfernen',
-    timeJustNow: 'Gerade eben',
-    timeMinutesAgo: (n) => `vor ${n} Min.`,
-    timeHoursAgo: (n) => `vor ${n} Std.`,
-    timeDaysAgo: (n) => `vor ${n} Tagen`,
-    summaryGenerating: 'Zusammenfassung wird erstellt…',
-    searchPlaceholder: 'Titel oder Website suchen…',
-    emptyTitleSearch: 'Keine übereinstimmenden Ergebnisse',
-    emptyHintSearch: 'Versuche ein anderes Stichwort',
-  },
-  en: {
-    appSlogan: 'Read later, miss nothing',
-    emptyTitle: 'Your reading list is empty',
-    emptyTitleFiltered: 'No items match the filter',
-    emptyHintFiltered: 'Try switching the filter',
-    clearRead: 'Clear read',
-    addCurrentPage: 'Add current page',
-    filterAll: 'All',
-    filterUnread: 'Unread',
-    filterRead: 'Read',
-    shortcutPrefix: 'Press',
-    shortcutSuffix: 'or click the add button to save this page',
-    markAsRead: 'Mark as read',
-    markAsUnread: 'Mark as unread',
-    remove: 'Remove',
-    timeJustNow: 'Just now',
-    timeMinutesAgo: (n) => `${n}m ago`,
-    timeHoursAgo: (n) => `${n}h ago`,
-    timeDaysAgo: (n) => `${n}d ago`,
-    summaryGenerating: 'Generating summary…',
-    searchPlaceholder: 'Search title or site…',
-    emptyTitleSearch: 'No matching results',
-    emptyHintSearch: 'Try a different keyword',
-  },
-};
-
-function detectLocale(): Locale {
-  const lang = navigator.language.toLowerCase();
-
-  // 简繁中文区分
-  if (lang.startsWith('zh')) {
-    const isTraditional =
-      lang.includes('tw') || lang.includes('hk') || lang.includes('mo') || lang.includes('hant');
-    return isTraditional ? locales['zh-hant'] : locales['zh-hans'];
-  }
-
-  // 精确匹配语言前缀
-  const prefix = lang.split('-')[0];
-  return locales[prefix] ?? locales['en'];
+/** 获取无占位符的翻译字符串 */
+function msg(key: string): string {
+  return chrome.i18n.getMessage(key);
 }
 
-export const t = detectLocale();
+/** 获取带数字占位符的翻译字符串 */
+function msgN(key: string, n: number): string {
+  return chrome.i18n.getMessage(key, [String(n)]);
+}
+
+export const t = {
+  get appSlogan()          { return msg('appSlogan'); },
+  get emptyTitle()         { return msg('emptyTitle'); },
+  get emptyTitleFiltered() { return msg('emptyTitleFiltered'); },
+  get emptyHintFiltered()  { return msg('emptyHintFiltered'); },
+  get clearRead()          { return msg('clearRead'); },
+  get addCurrentPage()     { return msg('addCurrentPage'); },
+  get filterAll()          { return msg('filterAll'); },
+  get filterUnread()       { return msg('filterUnread'); },
+  get filterRead()         { return msg('filterRead'); },
+  get shortcutPrefix()     { return msg('shortcutPrefix'); },
+  get shortcutSuffix()     { return msg('shortcutSuffix'); },
+  get markAsRead()         { return msg('markAsRead'); },
+  get markAsUnread()       { return msg('markAsUnread'); },
+  get remove()             { return msg('remove'); },
+  get timeJustNow()        { return msg('timeJustNow'); },
+  get summaryGenerating()  { return msg('summaryGenerating'); },
+  get searchPlaceholder()  { return msg('searchPlaceholder'); },
+  get emptyTitleSearch()   { return msg('emptyTitleSearch'); },
+  get emptyHintSearch()    { return msg('emptyHintSearch'); },
+
+  timeMinutesAgo: (n: number) => msgN('timeMinutesAgo', n),
+  timeHoursAgo:   (n: number) => msgN('timeHoursAgo', n),
+  timeDaysAgo:    (n: number) => msgN('timeDaysAgo', n),
+};

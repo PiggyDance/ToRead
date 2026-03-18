@@ -1,0 +1,56 @@
+{
+  "appSlogan": { "message": "稍後讀，不錯過" },
+  "emptyTitle": { "message": "待閱讀清單為空" },
+  "emptyTitleFiltered": { "message": "沒有符合篩選條件的文章" },
+  "emptyHintFiltered": { "message": "試試切換篩選條件" },
+  "clearRead": { "message": "清除已讀" },
+  "addCurrentPage": { "message": "新增目前頁面" },
+  "filterAll": { "message": "全部" },
+  "filterUnread": { "message": "未讀" },
+  "filterRead": { "message": "已讀" },
+  "shortcutPrefix": { "message": "按" },
+  "shortcutSuffix": { "message": "或點擊添加按鈕，將目前頁面加入清單" },
+  "markAsRead": { "message": "標記為已讀" },
+  "markAsUnread": { "message": "標記為未讀" },
+  "remove": { "message": "刪除" },
+  "timeJustNow": { "message": "剛剛" },
+  "timeMinutesAgo": {
+    "message": "$N$ 分鐘前",
+    "placeholders": { "n": { "content": "$1" } }
+  },
+  "timeHoursAgo": {
+    "message": "$N$ 小時前",
+    "placeholders": { "n": { "content": "$1" } }
+  },
+  "timeDaysAgo": {
+    "message": "$N$ 天前",
+    "placeholders": { "n": { "content": "$1" } }
+  },
+  "summaryGenerating": { "message": "正在生成摘要…" },
+  "searchPlaceholder": { "message": "搜尋標題或網站…" },
+  "emptyTitleSearch": { "message": "沒有符合的結果" },
+  "emptyHintSearch": { "message": "試試其他關鍵字" },
+  "extName": { "message": "ToRead" },
+  "extDescription": { "message": "將目前頁面加入待閱讀清單，方便稍後閱讀" },
+  "cmdAddToRead": { "message": "將目前頁面加入待閱讀清單" },
+  "cmdOpenPanel": { "message": "開啟/關閉 ToRead 側邊欄" },
+  "actionTitle": { "message": "ToRead - 開啟待閱讀清單" },
+
+  "demoItem1Title": { "message": "👋 歡迎使用 ToRead！點擊右上角 + 或快捷鍵，將目前頁面加入清單" },
+  "demoItem1Summary": { "message": "點擊卡片右側的 ✓ 標記已讀，按 D 刪除，按 J/K 上下導覽，按 Enter 開啟頁面。" },
+  "demoItem1Tag": { "message": "使用指南" },
+
+  "demoItem2Title": { "message": "🏷️ Tag 分類：給文章打標籤，點擊 Tag 可過濾同類內容" },
+  "demoItem2Summary": { "message": "懸停卡片，點擊右側標籤圖示即可新增 Tag。點擊 Tag 可按標籤過濾，與搜尋框同時生效（AND 關係）。" },
+  "demoItem2Tag": { "message": "功能演示" },
+
+  "demoItem3Title": { "message": "🔍 搜尋過濾：在頂部搜尋框輸入關鍵字，即時過濾標題和網站" },
+  "demoItem3Summary": { "message": "支援標題和網域的模糊比對。搜尋與 Tag 過濾可同時使用，取兩者交集。" },
+  "demoItem3Tag": { "message": "功能演示" },
+
+  "demoItem4Title": { "message": "✅ 這是一條已讀範例 — 標記已讀後會變灰，可用「清除已讀」批次刪除" },
+  "demoItem4Summary": { "message": "點擊卡片右側的 ✓ 按鈕標記已讀，或按鍵盤 R 鍵。已讀條目會降低透明度顯示在清單中。" },
+
+  "dailyRecommendTitle": { "message": "📖 ToRead 每日推薦" },
+  "dailyRecommendButton": { "message": "立即閱讀" }
+}

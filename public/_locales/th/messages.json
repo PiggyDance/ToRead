@@ -1,0 +1,56 @@
+{
+  "appSlogan": { "message": "อ่านทีหลัง ไม่พลาดสักชิ้น" },
+  "emptyTitle": { "message": "รายการอ่านว่างเปล่า" },
+  "emptyTitleFiltered": { "message": "ไม่มีรายการที่ตรงกับตัวกรอง" },
+  "emptyHintFiltered": { "message": "ลองเปลี่ยนตัวกรอง" },
+  "clearRead": { "message": "ล้างที่อ่านแล้ว" },
+  "addCurrentPage": { "message": "เพิ่มหน้านี้" },
+  "filterAll": { "message": "ทั้งหมด" },
+  "filterUnread": { "message": "ยังไม่อ่าน" },
+  "filterRead": { "message": "อ่านแล้ว" },
+  "shortcutPrefix": { "message": "กด" },
+  "shortcutSuffix": { "message": "หรือคลิกปุ่มเพิ่มเพื่อเพิ่มหน้านี้" },
+  "markAsRead": { "message": "ทำเครื่องหมายว่าอ่านแล้ว" },
+  "markAsUnread": { "message": "ทำเครื่องหมายว่ายังไม่อ่าน" },
+  "remove": { "message": "ลบ" },
+  "timeJustNow": { "message": "เมื่อกี้" },
+  "timeMinutesAgo": {
+    "message": "$N$ นาทีที่แล้ว",
+    "placeholders": { "n": { "content": "$1" } }
+  },
+  "timeHoursAgo": {
+    "message": "$N$ ชั่วโมงที่แล้ว",
+    "placeholders": { "n": { "content": "$1" } }
+  },
+  "timeDaysAgo": {
+    "message": "$N$ วันที่แล้ว",
+    "placeholders": { "n": { "content": "$1" } }
+  },
+  "summaryGenerating": { "message": "กำลังสร้างสรุป…" },
+  "searchPlaceholder": { "message": "ค้นหาชื่อหรือเว็บไซต์…" },
+  "emptyTitleSearch": { "message": "ไม่พบผลลัพธ์ที่ตรงกัน" },
+  "emptyHintSearch": { "message": "ลองใช้คำค้นหาอื่น" },
+  "extName": { "message": "ToRead" },
+  "extDescription": { "message": "เพิ่มหน้าปัจจุบันลงในรายการอ่านทีหลัง" },
+  "cmdAddToRead": { "message": "เพิ่มหน้าปัจจุบันลงในรายการอ่านทีหลัง" },
+  "cmdOpenPanel": { "message": "เปิด/ปิดแผงด้านข้าง ToRead" },
+  "actionTitle": { "message": "ToRead - เปิดรายการอ่านทีหลัง" },
+
+  "demoItem1Title": { "message": "👋 ยินดีต้อนรับสู่ ToRead! คลิก + มุมขวาบนหรือใช้ทางลัดเพื่อบันทึกหน้า" },
+  "demoItem1Summary": { "message": "คลิก ✓ เพื่อทำเครื่องหมายว่าอ่านแล้ว, D เพื่อลบ, J/K เพื่อเลื่อน, Enter เพื่อเปิดหน้า" },
+  "demoItem1Tag": { "message": "คู่มือ" },
+
+  "demoItem2Title": { "message": "🏷️ แท็ก: ติดแท็กบทความและคลิกแท็กเพื่อกรอง" },
+  "demoItem2Summary": { "message": "วางเมาส์บนการ์ดแล้วคลิกไอคอนแท็กเพื่อเพิ่มแท็ก คลิกแท็กเพื่อกรองเนื้อหา" },
+  "demoItem2Tag": { "message": "สาธิต" },
+
+  "demoItem3Title": { "message": "🔍 ค้นหา: พิมพ์ในช่องค้นหาเพื่อกรองตามชื่อหรือเว็บไซต์" },
+  "demoItem3Summary": { "message": "รองรับการค้นหาแบบ fuzzy ในชื่อและโดเมน ใช้ร่วมกับตัวกรองแท็กได้ (AND)" },
+  "demoItem3Tag": { "message": "สาธิต" },
+
+  "demoItem4Title": { "message": "✅ ตัวอย่างที่อ่านแล้ว — รายการที่อ่านแล้วจะจางลง ใช้ 'ล้างที่อ่านแล้ว' เพื่อลบ" },
+  "demoItem4Summary": { "message": "คลิก ✓ หรือกด R เพื่อทำเครื่องหมายว่าอ่านแล้ว รายการที่อ่านแล้วจะแสดงแบบจางลง" },
+
+  "dailyRecommendTitle": { "message": "📖 ToRead แนะนำประจำวัน" },
+  "dailyRecommendButton": { "message": "อ่านเลย" }
+}

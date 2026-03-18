@@ -1,0 +1,56 @@
+{
+  "appSlogan": { "message": "나중에 읽고, 놓치지 않기" },
+  "emptyTitle": { "message": "읽기 목록이 비어 있습니다" },
+  "emptyTitleFiltered": { "message": "조건에 맞는 항목이 없습니다" },
+  "emptyHintFiltered": { "message": "필터를 변경해 보세요" },
+  "clearRead": { "message": "읽은 항목 삭제" },
+  "addCurrentPage": { "message": "현재 페이지 추가" },
+  "filterAll": { "message": "전체" },
+  "filterUnread": { "message": "안 읽음" },
+  "filterRead": { "message": "읽음" },
+  "shortcutPrefix": { "message": "" },
+  "shortcutSuffix": { "message": "를 누르거나 추가 버튼으로 페이지를 추가하세요" },
+  "markAsRead": { "message": "읽음으로 표시" },
+  "markAsUnread": { "message": "안 읽음으로 표시" },
+  "remove": { "message": "삭제" },
+  "timeJustNow": { "message": "방금" },
+  "timeMinutesAgo": {
+    "message": "$N$분 전",
+    "placeholders": { "n": { "content": "$1" } }
+  },
+  "timeHoursAgo": {
+    "message": "$N$시간 전",
+    "placeholders": { "n": { "content": "$1" } }
+  },
+  "timeDaysAgo": {
+    "message": "$N$일 전",
+    "placeholders": { "n": { "content": "$1" } }
+  },
+  "summaryGenerating": { "message": "요약 생성 중…" },
+  "searchPlaceholder": { "message": "제목 또는 사이트 검색…" },
+  "emptyTitleSearch": { "message": "일치하는 결과가 없습니다" },
+  "emptyHintSearch": { "message": "다른 키워드를 시도해 보세요" },
+  "extName": { "message": "ToRead" },
+  "extDescription": { "message": "현재 페이지를 나중에 읽기 목록에 추가합니다" },
+  "cmdAddToRead": { "message": "현재 페이지를 나중에 읽기 목록에 추가" },
+  "cmdOpenPanel": { "message": "ToRead 사이드 패널 열기/닫기" },
+  "actionTitle": { "message": "ToRead - 나중에 읽기 목록 열기" },
+
+  "demoItem1Title": { "message": "👋 ToRead에 오신 것을 환영합니다! 우측 상단 + 또는 단축키로 페이지 추가" },
+  "demoItem1Summary": { "message": "카드의 ✓ 로 읽음 표시, D 로 삭제, J/K 로 이동, Enter 로 페이지 열기." },
+  "demoItem1Tag": { "message": "가이드" },
+
+  "demoItem2Title": { "message": "🏷️ 태그 기능: 기사에 태그를 달고 필터링하기" },
+  "demoItem2Summary": { "message": "카드에 마우스를 올리고 태그 아이콘을 클릭하면 태그를 추가할 수 있습니다. 태그를 클릭하면 필터링됩니다." },
+  "demoItem2Tag": { "message": "데모" },
+
+  "demoItem3Title": { "message": "🔍 검색: 검색창에 키워드를 입력해 제목이나 사이트로 필터링" },
+  "demoItem3Summary": { "message": "제목과 도메인의 퍼지 검색을 지원합니다. 태그 필터와 함께 사용할 수 있습니다（AND 조건）." },
+  "demoItem3Tag": { "message": "데모" },
+
+  "demoItem4Title": { "message": "✅ 읽음 예시 — 읽음 표시 후 흐려지며 '읽은 항목 삭제'로 일괄 삭제 가능" },
+  "demoItem4Summary": { "message": "✓ 버튼 또는 R 키로 읽음 표시할 수 있습니다. 읽은 항목은 흐리게 표시됩니다." },
+
+  "dailyRecommendTitle": { "message": "📖 ToRead 오늘의 추천" },
+  "dailyRecommendButton": { "message": "지금 읽기" }
+}

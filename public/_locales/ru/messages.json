@@ -1,0 +1,56 @@
+{
+  "appSlogan": { "message": "Читай позже, не пропускай" },
+  "emptyTitle": { "message": "Список чтения пуст" },
+  "emptyTitleFiltered": { "message": "Нет элементов, соответствующих фильтру" },
+  "emptyHintFiltered": { "message": "Попробуйте изменить фильтр" },
+  "clearRead": { "message": "Очистить прочитанное" },
+  "addCurrentPage": { "message": "Добавить текущую страницу" },
+  "filterAll": { "message": "Все" },
+  "filterUnread": { "message": "Непрочитанное" },
+  "filterRead": { "message": "Прочитанное" },
+  "shortcutPrefix": { "message": "Нажмите" },
+  "shortcutSuffix": { "message": "или кнопку добавления, чтобы добавить эту страницу" },
+  "markAsRead": { "message": "Отметить как прочитанное" },
+  "markAsUnread": { "message": "Отметить как непрочитанное" },
+  "remove": { "message": "Удалить" },
+  "timeJustNow": { "message": "Только что" },
+  "timeMinutesAgo": {
+    "message": "$N$ мин назад",
+    "placeholders": { "n": { "content": "$1" } }
+  },
+  "timeHoursAgo": {
+    "message": "$N$ ч назад",
+    "placeholders": { "n": { "content": "$1" } }
+  },
+  "timeDaysAgo": {
+    "message": "$N$ дн назад",
+    "placeholders": { "n": { "content": "$1" } }
+  },
+  "summaryGenerating": { "message": "Создание резюме…" },
+  "searchPlaceholder": { "message": "Поиск по заголовку или сайту…" },
+  "emptyTitleSearch": { "message": "Нет совпадающих результатов" },
+  "emptyHintSearch": { "message": "Попробуйте другое ключевое слово" },
+  "extName": { "message": "ToRead" },
+  "extDescription": { "message": "Добавьте текущую страницу в список чтения" },
+  "cmdAddToRead": { "message": "Добавить текущую страницу в список чтения" },
+  "cmdOpenPanel": { "message": "Открыть/закрыть панель ToRead" },
+  "actionTitle": { "message": "ToRead - Открыть список чтения" },
+
+  "demoItem1Title": { "message": "👋 Добро пожаловать в ToRead! Нажмите + вверху справа или используйте ярлык для сохранения страниц" },
+  "demoItem1Summary": { "message": "Нажмите ✓ для отметки прочитанным, D для удаления, J/K для навигации, Enter для открытия." },
+  "demoItem1Tag": { "message": "руководство" },
+
+  "demoItem2Title": { "message": "🏷️ Теги: Помечайте статьи тегами и нажимайте тег для фильтрации" },
+  "demoItem2Summary": { "message": "Наведите курсор на карточку и нажмите значок тега для добавления. Нажмите тег для фильтрации, работает вместе с поиском (И)." },
+  "demoItem2Tag": { "message": "демо" },
+
+  "demoItem3Title": { "message": "🔍 Поиск: Введите ключевое слово для фильтрации по заголовку или сайту" },
+  "demoItem3Summary": { "message": "Нечёткий поиск по заголовку и домену. Комбинируйте с фильтром по тегам для точных результатов." },
+  "demoItem3Tag": { "message": "демо" },
+
+  "demoItem4Title": { "message": "✅ Пример прочитанного — прочитанные элементы тускнеют, используйте «Очистить прочитанное» для удаления" },
+  "demoItem4Summary": { "message": "Нажмите ✓ или клавишу R для отметки прочитанным. Прочитанные элементы остаются видимыми, но затемнёнными." },
+
+  "dailyRecommendTitle": { "message": "📖 ToRead Рекомендация дня" },
+  "dailyRecommendButton": { "message": "Читать сейчас" }
+}
