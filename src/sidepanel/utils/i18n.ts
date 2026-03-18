@@ -18,6 +18,9 @@ type Locale = {
   timeHoursAgo: (n: number) => string;
   timeDaysAgo: (n: number) => string;
   summaryGenerating: string;
+  searchPlaceholder: string;
+  emptyTitleSearch: string;
+  emptyHintSearch: string;
 };
 
 const locales: Record<string, Locale> = {
@@ -32,7 +35,7 @@ const locales: Record<string, Locale> = {
     filterUnread: '未读',
     filterRead: '已读',
     shortcutPrefix: '按',
-    shortcutSuffix: '或点击下方按钮，将当前页面添加到列表',
+    shortcutSuffix: '或点击添加按钮，将当前页面加入列表',
     markAsRead: '标记为已读',
     markAsUnread: '标记为未读',
     remove: '删除',
@@ -41,6 +44,9 @@ const locales: Record<string, Locale> = {
     timeHoursAgo: (n) => `${n} 小时前`,
     timeDaysAgo: (n) => `${n} 天前`,
     summaryGenerating: '正在生成摘要…',
+    searchPlaceholder: '搜索标题或网站…',
+    emptyTitleSearch: '没有匹配的结果',
+    emptyHintSearch: '试试其他关键词',
   },
   'zh-hant': {
     appSlogan: '稍後讀，不錯過',
@@ -53,7 +59,7 @@ const locales: Record<string, Locale> = {
     filterUnread: '未讀',
     filterRead: '已讀',
     shortcutPrefix: '按',
-    shortcutSuffix: '或點擊下方按鈕，將目前頁面加入清單',
+    shortcutSuffix: '或點擊添加按鈕，將目前頁面加入清單',
     markAsRead: '標記為已讀',
     markAsUnread: '標記為未讀',
     remove: '刪除',
@@ -62,6 +68,9 @@ const locales: Record<string, Locale> = {
     timeHoursAgo: (n) => `${n} 小時前`,
     timeDaysAgo: (n) => `${n} 天前`,
     summaryGenerating: '正在生成摘要…',
+    searchPlaceholder: '搜尋標題或網站…',
+    emptyTitleSearch: '沒有符合的結果',
+    emptyHintSearch: '試試其他關鍵字',
   },
   ja: {
     appSlogan: 'あとで読む、見逃さない',
@@ -74,7 +83,7 @@ const locales: Record<string, Locale> = {
     filterUnread: '未読',
     filterRead: '既読',
     shortcutPrefix: '',
-    shortcutSuffix: 'を押すか、下のボタンでページを追加',
+    shortcutSuffix: 'を押すか、追加ボタンでページを追加',
     markAsRead: '既読にする',
     markAsUnread: '未読にする',
     remove: '削除',
@@ -83,6 +92,9 @@ const locales: Record<string, Locale> = {
     timeHoursAgo: (n) => `${n} 時間前`,
     timeDaysAgo: (n) => `${n} 日前`,
     summaryGenerating: '要約を生成中…',
+    searchPlaceholder: 'タイトルやサイトを検索…',
+    emptyTitleSearch: '一致する結果がありません',
+    emptyHintSearch: '別のキーワードをお試しください',
   },
   ko: {
     appSlogan: '나중에 읽고, 놓치지 않기',
@@ -95,7 +107,7 @@ const locales: Record<string, Locale> = {
     filterUnread: '안 읽음',
     filterRead: '읽음',
     shortcutPrefix: '',
-    shortcutSuffix: '를 누르거나 아래 버튼으로 페이지를 추가하세요',
+    shortcutSuffix: '를 누르거나 추가 버튼으로 페이지를 추가하세요',
     markAsRead: '읽음으로 표시',
     markAsUnread: '안 읽음으로 표시',
     remove: '삭제',
@@ -104,6 +116,9 @@ const locales: Record<string, Locale> = {
     timeHoursAgo: (n) => `${n}시간 전`,
     timeDaysAgo: (n) => `${n}일 전`,
     summaryGenerating: '요약 생성 중…',
+    searchPlaceholder: '제목 또는 사이트 검색…',
+    emptyTitleSearch: '일치하는 결과가 없습니다',
+    emptyHintSearch: '다른 키워드를 시도해 보세요',
   },
   th: {
     appSlogan: 'อ่านทีหลัง ไม่พลาดสักชิ้น',
@@ -116,7 +131,7 @@ const locales: Record<string, Locale> = {
     filterUnread: 'ยังไม่อ่าน',
     filterRead: 'อ่านแล้ว',
     shortcutPrefix: 'กด',
-    shortcutSuffix: 'หรือคลิกปุ่มด้านล่างเพื่อเพิ่มหน้านี้',
+    shortcutSuffix: 'หรือคลิกปุ่มเพิ่มเพื่อเพิ่มหน้านี้',
     markAsRead: 'ทำเครื่องหมายว่าอ่านแล้ว',
     markAsUnread: 'ทำเครื่องหมายว่ายังไม่อ่าน',
     remove: 'ลบ',
@@ -125,6 +140,9 @@ const locales: Record<string, Locale> = {
     timeHoursAgo: (n) => `${n} ชั่วโมงที่แล้ว`,
     timeDaysAgo: (n) => `${n} วันที่แล้ว`,
     summaryGenerating: 'กำลังสร้างสรุป…',
+    searchPlaceholder: 'ค้นหาชื่อหรือเว็บไซต์…',
+    emptyTitleSearch: 'ไม่พบผลลัพธ์ที่ตรงกัน',
+    emptyHintSearch: 'ลองใช้คำค้นหาอื่น',
   },
   vi: {
     appSlogan: 'Đọc sau, không bỏ lỡ',
@@ -137,7 +155,7 @@ const locales: Record<string, Locale> = {
     filterUnread: 'Chưa đọc',
     filterRead: 'Đã đọc',
     shortcutPrefix: 'Nhấn',
-    shortcutSuffix: 'hoặc nhấn nút bên dưới để thêm trang này',
+    shortcutSuffix: 'hoặc nhấn nút thêm để thêm trang này',
     markAsRead: 'Đánh dấu đã đọc',
     markAsUnread: 'Đánh dấu chưa đọc',
     remove: 'Xóa',
@@ -146,6 +164,9 @@ const locales: Record<string, Locale> = {
     timeHoursAgo: (n) => `${n} giờ trước`,
     timeDaysAgo: (n) => `${n} ngày trước`,
     summaryGenerating: 'Đang tạo tóm tắt…',
+    searchPlaceholder: 'Tìm kiếm tiêu đề hoặc trang web…',
+    emptyTitleSearch: 'Không có kết quả phù hợp',
+    emptyHintSearch: 'Thử từ khóa khác',
   },
   fr: {
     appSlogan: 'Lire plus tard, ne rien manquer',
@@ -158,7 +179,7 @@ const locales: Record<string, Locale> = {
     filterUnread: 'Non lu',
     filterRead: 'Lu',
     shortcutPrefix: 'Appuyez sur',
-    shortcutSuffix: 'ou cliquez sur le bouton ci-dessous pour ajouter cette page',
+    shortcutSuffix: 'ou cliquez sur le bouton d\'ajout pour ajouter cette page',
     markAsRead: 'Marquer comme lu',
     markAsUnread: 'Marquer comme non lu',
     remove: 'Supprimer',
@@ -167,6 +188,9 @@ const locales: Record<string, Locale> = {
     timeHoursAgo: (n) => `il y a ${n} h`,
     timeDaysAgo: (n) => `il y a ${n} j`,
     summaryGenerating: 'Génération du résumé…',
+    searchPlaceholder: 'Rechercher un titre ou un site…',
+    emptyTitleSearch: 'Aucun résultat correspondant',
+    emptyHintSearch: 'Essayez un autre mot-clé',
   },
   es: {
     appSlogan: 'Lee después, no te pierdas nada',
@@ -179,7 +203,7 @@ const locales: Record<string, Locale> = {
     filterUnread: 'No leído',
     filterRead: 'Leído',
     shortcutPrefix: 'Pulsa',
-    shortcutSuffix: 'o haz clic en el botón de abajo para añadir esta página',
+    shortcutSuffix: 'o haz clic en el botón de añadir para añadir esta página',
     markAsRead: 'Marcar como leído',
     markAsUnread: 'Marcar como no leído',
     remove: 'Eliminar',
@@ -188,6 +212,9 @@ const locales: Record<string, Locale> = {
     timeHoursAgo: (n) => `hace ${n} h`,
     timeDaysAgo: (n) => `hace ${n} días`,
     summaryGenerating: 'Generando resumen…',
+    searchPlaceholder: 'Buscar título o sitio…',
+    emptyTitleSearch: 'Sin resultados coincidentes',
+    emptyHintSearch: 'Prueba con otra palabra clave',
   },
   ru: {
     appSlogan: 'Читай позже, не пропускай',
@@ -200,7 +227,7 @@ const locales: Record<string, Locale> = {
     filterUnread: 'Непрочитанное',
     filterRead: 'Прочитанное',
     shortcutPrefix: 'Нажмите',
-    shortcutSuffix: 'или кнопку ниже, чтобы добавить эту страницу',
+    shortcutSuffix: 'или кнопку добавления, чтобы добавить эту страницу',
     markAsRead: 'Отметить как прочитанное',
     markAsUnread: 'Отметить как непрочитанное',
     remove: 'Удалить',
@@ -209,6 +236,9 @@ const locales: Record<string, Locale> = {
     timeHoursAgo: (n) => `${n} ч назад`,
     timeDaysAgo: (n) => `${n} дн назад`,
     summaryGenerating: 'Создание резюме…',
+    searchPlaceholder: 'Поиск по заголовку или сайту…',
+    emptyTitleSearch: 'Нет совпадающих результатов',
+    emptyHintSearch: 'Попробуйте другое ключевое слово',
   },
   de: {
     appSlogan: 'Später lesen, nichts verpassen',
@@ -221,7 +251,7 @@ const locales: Record<string, Locale> = {
     filterUnread: 'Ungelesen',
     filterRead: 'Gelesen',
     shortcutPrefix: 'Drücke',
-    shortcutSuffix: 'oder klicke den Button unten, um diese Seite hinzuzufügen',
+    shortcutSuffix: 'oder klicke den Hinzufügen-Button, um diese Seite hinzuzufügen',
     markAsRead: 'Als gelesen markieren',
     markAsUnread: 'Als ungelesen markieren',
     remove: 'Entfernen',
@@ -230,6 +260,9 @@ const locales: Record<string, Locale> = {
     timeHoursAgo: (n) => `vor ${n} Std.`,
     timeDaysAgo: (n) => `vor ${n} Tagen`,
     summaryGenerating: 'Zusammenfassung wird erstellt…',
+    searchPlaceholder: 'Titel oder Website suchen…',
+    emptyTitleSearch: 'Keine übereinstimmenden Ergebnisse',
+    emptyHintSearch: 'Versuche ein anderes Stichwort',
   },
   en: {
     appSlogan: 'Read later, miss nothing',
@@ -242,7 +275,7 @@ const locales: Record<string, Locale> = {
     filterUnread: 'Unread',
     filterRead: 'Read',
     shortcutPrefix: 'Press',
-    shortcutSuffix: 'or click the button below to add this page',
+    shortcutSuffix: 'or click the add button to save this page',
     markAsRead: 'Mark as read',
     markAsUnread: 'Mark as unread',
     remove: 'Remove',
@@ -251,6 +284,9 @@ const locales: Record<string, Locale> = {
     timeHoursAgo: (n) => `${n}h ago`,
     timeDaysAgo: (n) => `${n}d ago`,
     summaryGenerating: 'Generating summary…',
+    searchPlaceholder: 'Search title or site…',
+    emptyTitleSearch: 'No matching results',
+    emptyHintSearch: 'Try a different keyword',
   },
 };
 

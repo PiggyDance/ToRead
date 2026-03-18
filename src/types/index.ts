@@ -12,8 +12,10 @@ export interface ReadItem {
   createdAt: string;
   /** 是否已读 */
   isRead: boolean;
-  /** AI 生成的页面内容摘要 */
+  /** 页面摘要（meta description 优先） */
   summary?: string;
+  /** 用户标签 */
+  tags?: string[];
 }
 
 /** 存储数据结构 */

@@ -8,14 +8,12 @@ interface FilterBarProps {
   counts: {
     all: number;
     unread: number;
-    read: number;
   };
 }
 
 const filters: { key: FilterMode; label: string }[] = [
   { key: 'all', label: t.filterAll },
   { key: 'unread', label: t.filterUnread },
-  { key: 'read', label: t.filterRead },
 ];
 
 export const FilterBar: FC<FilterBarProps> = ({ filter, onFilterChange, counts }) => {

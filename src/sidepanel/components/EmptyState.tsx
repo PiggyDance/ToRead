@@ -3,6 +3,7 @@ import { t } from '../utils/i18n';
 
 interface EmptyStateProps {
   filterActive: boolean;
+  searchActive?: boolean;
 }
 
 const isMac = navigator.platform.toUpperCase().includes('MAC');
@@ -21,7 +22,19 @@ const ShortcutHint: FC = () => {
   );
 };
 
-export const EmptyState: FC<EmptyStateProps> = ({ filterActive }) => {
+export const EmptyState: FC<EmptyStateProps> = ({ filterActive, searchActive }) => {
+  const title = searchActive
+    ? t.emptyTitleSearch
+    : filterActive
+    ? t.emptyTitleFiltered
+    : t.emptyTitle;
+
+  const hint = searchActive
+    ? t.emptyHintSearch
+    : filterActive
+    ? t.emptyHintFiltered
+    : null;
+
   return (
     <div className="empty-state">
       <div className="empty-icon">
@@ -31,11 +44,9 @@ export const EmptyState: FC<EmptyStateProps> = ({ filterActive }) => {
           <line x1="32" y1="32" x2="32" y2="44" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
         </svg>
       </div>
-      <h3 className="empty-title">
-        {filterActive ? t.emptyTitleFiltered : t.emptyTitle}
-      </h3>
+      <h3 className="empty-title">{title}</h3>
       <p className="empty-description">
-        {filterActive ? t.emptyHintFiltered : <ShortcutHint />}
+        {hint ?? <ShortcutHint />}
       </p>
     </div>
   );

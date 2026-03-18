@@ -1,13 +1,16 @@
 import { useState, useEffect, useCallback } from 'react';
 import type { ReadItem } from '../../types';
-import { getItems, addItem, removeItem, toggleRead, clearRead, onItemsChanged } from '../../storage';
+import { getItems, addItem, removeItem, toggleRead, clearRead, onItemsChanged, updateTags } from '../../storage';
 
-export type FilterMode = 'all' | 'unread' | 'read';
+export type FilterMode = 'all' | 'unread';
 
 export function useReadItems() {
   const [items, setItems] = useState<ReadItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState<FilterMode>('all');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [activeTag, setActiveTag] = useState<string | null>(null);
+  const [focusedIndex, setFocusedIndex] = useState(-1);
 
   // 初始加载：有未读则默认展示"未读"，否则展示"全部"
   useEffect(() => {
@@ -54,16 +57,30 @@ export function useReadItems() {
     setItems((prev) => prev.filter((item) => !item.isRead));
   }, []);
 
+  const handleUpdateTags = useCallback(async (id: string, tags: string[]) => {
+    await updateTags(id, tags);
+    setItems((prev) =>
+      prev.map((item) => (item.id === id ? { ...item, tags } : item))
+    );
+  }, []);
+
   const filteredItems = items.filter((item) => {
-    if (filter === 'unread') return !item.isRead;
-    if (filter === 'read') return item.isRead;
+    if (filter === 'unread' && item.isRead) return false;
+    if (activeTag && !(item.tags ?? []).includes(activeTag)) return false;
+    if (searchQuery) {
+      const q = searchQuery.toLowerCase();
+      const titleMatch = item.title.toLowerCase().includes(q);
+      const domainMatch = (() => {
+        try { return new URL(item.url).hostname.toLowerCase().includes(q); } catch { return false; }
+      })();
+      if (!titleMatch && !domainMatch) return false;
+    }
     return true;
   });
 
   const counts = {
     all: items.length,
     unread: items.filter((i) => !i.isRead).length,
-    read: items.filter((i) => i.isRead).length,
   };
 
   return {
@@ -72,11 +89,18 @@ export function useReadItems() {
     loading,
     filter,
     setFilter,
+    searchQuery,
+    setSearchQuery,
+    activeTag,
+    setActiveTag,
+    focusedIndex,
+    setFocusedIndex,
     counts,
     addCurrentPage: handleAddCurrentPage,
     remove: handleRemove,
     toggleRead: handleToggleRead,
     clearRead: handleClearRead,
+    updateTags: handleUpdateTags,
   };
 }
 
