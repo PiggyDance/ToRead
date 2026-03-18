@@ -9,10 +9,12 @@ export function useReadItems() {
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState<FilterMode>('all');
 
-  // 初始加载
+  // 初始加载：有未读则默认展示"未读"，否则展示"全部"
   useEffect(() => {
     getItems().then((data) => {
       setItems(data);
+      const hasUnread = data.some((item) => !item.isRead);
+      setFilter(hasUnread ? 'unread' : 'all');
       setLoading(false);
     });
 

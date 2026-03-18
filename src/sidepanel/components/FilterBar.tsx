@@ -1,5 +1,6 @@
 import type { FC } from 'react';
 import type { FilterMode } from '../hooks/useReadItems';
+import { t } from '../utils/i18n';
 
 interface FilterBarProps {
   filter: FilterMode;
@@ -12,9 +13,9 @@ interface FilterBarProps {
 }
 
 const filters: { key: FilterMode; label: string }[] = [
-  { key: 'all', label: '全部' },
-  { key: 'unread', label: '未读' },
-  { key: 'read', label: '已读' },
+  { key: 'all', label: t.filterAll },
+  { key: 'unread', label: t.filterUnread },
+  { key: 'read', label: t.filterRead },
 ];
 
 export const FilterBar: FC<FilterBarProps> = ({ filter, onFilterChange, counts }) => {

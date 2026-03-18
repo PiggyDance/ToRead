@@ -1,6 +1,7 @@
 import { useState, type FC } from 'react';
 import type { ReadItem } from '../../types';
 import { formatRelativeTime } from '../utils/time';
+import { t } from '../utils/i18n';
 
 interface ReadItemCardProps {
   item: ReadItem;
@@ -63,8 +64,8 @@ export const ReadItemCard: FC<ReadItemCardProps> = ({ item, onToggleRead, onRemo
         <button
           className="action-btn toggle-read-btn"
           onClick={() => onToggleRead(item.id)}
-          title={item.isRead ? '标记为未读' : '标记为已读'}
-          aria-label={item.isRead ? '标记为未读' : '标记为已读'}
+          title={item.isRead ? t.markAsUnread : t.markAsRead}
+          aria-label={item.isRead ? t.markAsUnread : t.markAsRead}
         >
           {item.isRead ? (
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -72,8 +73,7 @@ export const ReadItemCard: FC<ReadItemCardProps> = ({ item, onToggleRead, onRemo
               <circle cx="12" cy="12" r="3" />
             </svg>
           ) : (
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M9 18l6-6-6-6" />
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <polyline points="20 6 9 17 4 12" />
             </svg>
           )}
@@ -81,8 +81,8 @@ export const ReadItemCard: FC<ReadItemCardProps> = ({ item, onToggleRead, onRemo
         <button
           className="action-btn remove-btn"
           onClick={handleRemove}
-          title="删除"
-          aria-label="删除"
+          title={t.remove}
+          aria-label={t.remove}
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <line x1="18" y1="6" x2="6" y2="18" />

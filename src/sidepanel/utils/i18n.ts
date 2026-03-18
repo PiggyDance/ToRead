@@ -1,0 +1,260 @@
+type Locale = {
+  appSlogan: string;
+  emptyTitle: string;
+  emptyTitleFiltered: string;
+  emptyHintFiltered: string;
+  clearRead: string;
+  addCurrentPage: string;
+  filterAll: string;
+  filterUnread: string;
+  filterRead: string;
+  shortcutPrefix: string;
+  shortcutSuffix: string;
+  markAsRead: string;
+  markAsUnread: string;
+  remove: string;
+  timeJustNow: string;
+  timeMinutesAgo: (n: number) => string;
+  timeHoursAgo: (n: number) => string;
+  timeDaysAgo: (n: number) => string;
+};
+
+const locales: Record<string, Locale> = {
+  'zh-hans': {
+    appSlogan: '稍后读，不错过',
+    emptyTitle: '待阅读列表为空',
+    emptyTitleFiltered: '没有符合筛选条件的文章',
+    emptyHintFiltered: '试试切换筛选条件',
+    clearRead: '清除已读',
+    addCurrentPage: '添加当前页面',
+    filterAll: '全部',
+    filterUnread: '未读',
+    filterRead: '已读',
+    shortcutPrefix: '按',
+    shortcutSuffix: '或点击下方按钮，将当前页面添加到列表',
+    markAsRead: '标记为已读',
+    markAsUnread: '标记为未读',
+    remove: '删除',
+    timeJustNow: '刚刚',
+    timeMinutesAgo: (n) => `${n} 分钟前`,
+    timeHoursAgo: (n) => `${n} 小时前`,
+    timeDaysAgo: (n) => `${n} 天前`,
+  },
+  'zh-hant': {
+    appSlogan: '稍後讀，不錯過',
+    emptyTitle: '待閱讀清單為空',
+    emptyTitleFiltered: '沒有符合篩選條件的文章',
+    emptyHintFiltered: '試試切換篩選條件',
+    clearRead: '清除已讀',
+    addCurrentPage: '新增目前頁面',
+    filterAll: '全部',
+    filterUnread: '未讀',
+    filterRead: '已讀',
+    shortcutPrefix: '按',
+    shortcutSuffix: '或點擊下方按鈕，將目前頁面加入清單',
+    markAsRead: '標記為已讀',
+    markAsUnread: '標記為未讀',
+    remove: '刪除',
+    timeJustNow: '剛剛',
+    timeMinutesAgo: (n) => `${n} 分鐘前`,
+    timeHoursAgo: (n) => `${n} 小時前`,
+    timeDaysAgo: (n) => `${n} 天前`,
+  },
+  ja: {
+    appSlogan: 'あとで読む、見逃さない',
+    emptyTitle: 'リストは空です',
+    emptyTitleFiltered: '条件に一致する記事がありません',
+    emptyHintFiltered: 'フィルターを切り替えてみてください',
+    clearRead: '既読を削除',
+    addCurrentPage: '現在のページを追加',
+    filterAll: 'すべて',
+    filterUnread: '未読',
+    filterRead: '既読',
+    shortcutPrefix: '',
+    shortcutSuffix: 'を押すか、下のボタンでページを追加',
+    markAsRead: '既読にする',
+    markAsUnread: '未読にする',
+    remove: '削除',
+    timeJustNow: 'たった今',
+    timeMinutesAgo: (n) => `${n} 分前`,
+    timeHoursAgo: (n) => `${n} 時間前`,
+    timeDaysAgo: (n) => `${n} 日前`,
+  },
+  ko: {
+    appSlogan: '나중에 읽고, 놓치지 않기',
+    emptyTitle: '읽기 목록이 비어 있습니다',
+    emptyTitleFiltered: '조건에 맞는 항목이 없습니다',
+    emptyHintFiltered: '필터를 변경해 보세요',
+    clearRead: '읽은 항목 삭제',
+    addCurrentPage: '현재 페이지 추가',
+    filterAll: '전체',
+    filterUnread: '안 읽음',
+    filterRead: '읽음',
+    shortcutPrefix: '',
+    shortcutSuffix: '를 누르거나 아래 버튼으로 페이지를 추가하세요',
+    markAsRead: '읽음으로 표시',
+    markAsUnread: '안 읽음으로 표시',
+    remove: '삭제',
+    timeJustNow: '방금',
+    timeMinutesAgo: (n) => `${n}분 전`,
+    timeHoursAgo: (n) => `${n}시간 전`,
+    timeDaysAgo: (n) => `${n}일 전`,
+  },
+  th: {
+    appSlogan: 'อ่านทีหลัง ไม่พลาดสักชิ้น',
+    emptyTitle: 'รายการอ่านว่างเปล่า',
+    emptyTitleFiltered: 'ไม่มีรายการที่ตรงกับตัวกรอง',
+    emptyHintFiltered: 'ลองเปลี่ยนตัวกรอง',
+    clearRead: 'ล้างที่อ่านแล้ว',
+    addCurrentPage: 'เพิ่มหน้านี้',
+    filterAll: 'ทั้งหมด',
+    filterUnread: 'ยังไม่อ่าน',
+    filterRead: 'อ่านแล้ว',
+    shortcutPrefix: 'กด',
+    shortcutSuffix: 'หรือคลิกปุ่มด้านล่างเพื่อเพิ่มหน้านี้',
+    markAsRead: 'ทำเครื่องหมายว่าอ่านแล้ว',
+    markAsUnread: 'ทำเครื่องหมายว่ายังไม่อ่าน',
+    remove: 'ลบ',
+    timeJustNow: 'เมื่อกี้',
+    timeMinutesAgo: (n) => `${n} นาทีที่แล้ว`,
+    timeHoursAgo: (n) => `${n} ชั่วโมงที่แล้ว`,
+    timeDaysAgo: (n) => `${n} วันที่แล้ว`,
+  },
+  vi: {
+    appSlogan: 'Đọc sau, không bỏ lỡ',
+    emptyTitle: 'Danh sách đọc trống',
+    emptyTitleFiltered: 'Không có mục nào phù hợp',
+    emptyHintFiltered: 'Thử chuyển bộ lọc khác',
+    clearRead: 'Xóa đã đọc',
+    addCurrentPage: 'Thêm trang hiện tại',
+    filterAll: 'Tất cả',
+    filterUnread: 'Chưa đọc',
+    filterRead: 'Đã đọc',
+    shortcutPrefix: 'Nhấn',
+    shortcutSuffix: 'hoặc nhấn nút bên dưới để thêm trang này',
+    markAsRead: 'Đánh dấu đã đọc',
+    markAsUnread: 'Đánh dấu chưa đọc',
+    remove: 'Xóa',
+    timeJustNow: 'Vừa xong',
+    timeMinutesAgo: (n) => `${n} phút trước`,
+    timeHoursAgo: (n) => `${n} giờ trước`,
+    timeDaysAgo: (n) => `${n} ngày trước`,
+  },
+  fr: {
+    appSlogan: 'Lire plus tard, ne rien manquer',
+    emptyTitle: 'Votre liste de lecture est vide',
+    emptyTitleFiltered: 'Aucun élément ne correspond au filtre',
+    emptyHintFiltered: 'Essayez de changer le filtre',
+    clearRead: 'Effacer les lus',
+    addCurrentPage: 'Ajouter la page actuelle',
+    filterAll: 'Tout',
+    filterUnread: 'Non lu',
+    filterRead: 'Lu',
+    shortcutPrefix: 'Appuyez sur',
+    shortcutSuffix: 'ou cliquez sur le bouton ci-dessous pour ajouter cette page',
+    markAsRead: 'Marquer comme lu',
+    markAsUnread: 'Marquer comme non lu',
+    remove: 'Supprimer',
+    timeJustNow: "À l'instant",
+    timeMinutesAgo: (n) => `il y a ${n} min`,
+    timeHoursAgo: (n) => `il y a ${n} h`,
+    timeDaysAgo: (n) => `il y a ${n} j`,
+  },
+  es: {
+    appSlogan: 'Lee después, no te pierdas nada',
+    emptyTitle: 'Tu lista de lectura está vacía',
+    emptyTitleFiltered: 'Ningún elemento coincide con el filtro',
+    emptyHintFiltered: 'Prueba a cambiar el filtro',
+    clearRead: 'Borrar leídos',
+    addCurrentPage: 'Añadir página actual',
+    filterAll: 'Todo',
+    filterUnread: 'No leído',
+    filterRead: 'Leído',
+    shortcutPrefix: 'Pulsa',
+    shortcutSuffix: 'o haz clic en el botón de abajo para añadir esta página',
+    markAsRead: 'Marcar como leído',
+    markAsUnread: 'Marcar como no leído',
+    remove: 'Eliminar',
+    timeJustNow: 'Ahora mismo',
+    timeMinutesAgo: (n) => `hace ${n} min`,
+    timeHoursAgo: (n) => `hace ${n} h`,
+    timeDaysAgo: (n) => `hace ${n} días`,
+  },
+  ru: {
+    appSlogan: 'Читай позже, не пропускай',
+    emptyTitle: 'Список чтения пуст',
+    emptyTitleFiltered: 'Нет элементов, соответствующих фильтру',
+    emptyHintFiltered: 'Попробуйте изменить фильтр',
+    clearRead: 'Очистить прочитанное',
+    addCurrentPage: 'Добавить текущую страницу',
+    filterAll: 'Все',
+    filterUnread: 'Непрочитанное',
+    filterRead: 'Прочитанное',
+    shortcutPrefix: 'Нажмите',
+    shortcutSuffix: 'или кнопку ниже, чтобы добавить эту страницу',
+    markAsRead: 'Отметить как прочитанное',
+    markAsUnread: 'Отметить как непрочитанное',
+    remove: 'Удалить',
+    timeJustNow: 'Только что',
+    timeMinutesAgo: (n) => `${n} мин назад`,
+    timeHoursAgo: (n) => `${n} ч назад`,
+    timeDaysAgo: (n) => `${n} дн назад`,
+  },
+  de: {
+    appSlogan: 'Später lesen, nichts verpassen',
+    emptyTitle: 'Deine Leseliste ist leer',
+    emptyTitleFiltered: 'Keine Einträge entsprechen dem Filter',
+    emptyHintFiltered: 'Versuche den Filter zu wechseln',
+    clearRead: 'Gelesene löschen',
+    addCurrentPage: 'Aktuelle Seite hinzufügen',
+    filterAll: 'Alle',
+    filterUnread: 'Ungelesen',
+    filterRead: 'Gelesen',
+    shortcutPrefix: 'Drücke',
+    shortcutSuffix: 'oder klicke den Button unten, um diese Seite hinzuzufügen',
+    markAsRead: 'Als gelesen markieren',
+    markAsUnread: 'Als ungelesen markieren',
+    remove: 'Entfernen',
+    timeJustNow: 'Gerade eben',
+    timeMinutesAgo: (n) => `vor ${n} Min.`,
+    timeHoursAgo: (n) => `vor ${n} Std.`,
+    timeDaysAgo: (n) => `vor ${n} Tagen`,
+  },
+  en: {
+    appSlogan: 'Read later, miss nothing',
+    emptyTitle: 'Your reading list is empty',
+    emptyTitleFiltered: 'No items match the filter',
+    emptyHintFiltered: 'Try switching the filter',
+    clearRead: 'Clear read',
+    addCurrentPage: 'Add current page',
+    filterAll: 'All',
+    filterUnread: 'Unread',
+    filterRead: 'Read',
+    shortcutPrefix: 'Press',
+    shortcutSuffix: 'or click the button below to add this page',
+    markAsRead: 'Mark as read',
+    markAsUnread: 'Mark as unread',
+    remove: 'Remove',
+    timeJustNow: 'Just now',
+    timeMinutesAgo: (n) => `${n}m ago`,
+    timeHoursAgo: (n) => `${n}h ago`,
+    timeDaysAgo: (n) => `${n}d ago`,
+  },
+};
+
+function detectLocale(): Locale {
+  const lang = navigator.language.toLowerCase();
+
+  // 简繁中文区分
+  if (lang.startsWith('zh')) {
+    const isTraditional =
+      lang.includes('tw') || lang.includes('hk') || lang.includes('mo') || lang.includes('hant');
+    return isTraditional ? locales['zh-hant'] : locales['zh-hans'];
+  }
+
+  // 精确匹配语言前缀
+  const prefix = lang.split('-')[0];
+  return locales[prefix] ?? locales['en'];
+}
+
+export const t = detectLocale();

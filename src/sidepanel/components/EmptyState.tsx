@@ -1,8 +1,25 @@
 import type { FC } from 'react';
+import { t } from '../utils/i18n';
 
 interface EmptyStateProps {
   filterActive: boolean;
 }
+
+const isMac = navigator.platform.toUpperCase().includes('MAC');
+
+const ShortcutHint: FC = () => {
+  const keys = isMac
+    ? [<kbd key="cmd" className="kbd">⌘</kbd>, <kbd key="shift" className="kbd">⇧ Shift</kbd>, <kbd key="s" className="kbd">S</kbd>]
+    : [<kbd key="alt" className="kbd">Alt</kbd>, <kbd key="shift" className="kbd">Shift</kbd>, <kbd key="s" className="kbd">S</kbd>];
+
+  return (
+    <>
+      {t.shortcutPrefix && <>{t.shortcutPrefix} </>}
+      {keys}
+      {t.shortcutSuffix && <> {t.shortcutSuffix}</>}
+    </>
+  );
+};
 
 export const EmptyState: FC<EmptyStateProps> = ({ filterActive }) => {
   return (
@@ -15,12 +32,10 @@ export const EmptyState: FC<EmptyStateProps> = ({ filterActive }) => {
         </svg>
       </div>
       <h3 className="empty-title">
-        {filterActive ? '没有符合筛选条件的文章' : '待阅读列表为空'}
+        {filterActive ? t.emptyTitleFiltered : t.emptyTitle}
       </h3>
       <p className="empty-description">
-        {filterActive
-          ? '试试切换筛选条件'
-          : '按 Alt+Shift+S 或点击下方按钮，将当前页面添加到列表'}
+        {filterActive ? t.emptyHintFiltered : <ShortcutHint />}
       </p>
     </div>
   );

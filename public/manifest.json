@@ -20,14 +20,14 @@
     "add-to-read": {
       "suggested_key": {
         "default": "Alt+Shift+S",
-        "mac": "Alt+Shift+S"
+        "mac": "Command+Shift+S"
       },
       "description": "将当前页面添加到待阅读列表"
     },
     "_execute_action": {
       "suggested_key": {
         "default": "Alt+Shift+R",
-        "mac": "Alt+Shift+R"
+        "mac": "Command+Shift+R"
       },
       "description": "打开/关闭 ToRead 侧边栏"
     }
