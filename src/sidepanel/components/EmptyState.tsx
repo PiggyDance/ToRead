@@ -10,7 +10,7 @@ const isMac = navigator.platform.toUpperCase().includes('MAC');
 
 const ShortcutHint: FC = () => {
   const keys = isMac
-    ? [<kbd key="cmd" className="kbd">⌘</kbd>, <kbd key="shift" className="kbd">⇧ Shift</kbd>, <kbd key="s" className="kbd">S</kbd>]
+    ? [<kbd key="ctrl" className="kbd">⌃ Ctrl</kbd>, <kbd key="shift" className="kbd">⇧ Shift</kbd>, <kbd key="s" className="kbd">S</kbd>]
     : [<kbd key="alt" className="kbd">Alt</kbd>, <kbd key="shift" className="kbd">Shift</kbd>, <kbd key="s" className="kbd">S</kbd>];
 
   return (
